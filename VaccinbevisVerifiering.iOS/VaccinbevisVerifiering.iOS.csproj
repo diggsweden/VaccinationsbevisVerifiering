@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{95848D9E-3E8A-4324-BAFA-1D273CCBA6EA}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>VaccinbevisVerifiering.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>VaccinbevisVerifiering.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+    <Description>Validation of EUs Health Certificate</Description>
+    <ReleaseVersion>0.2</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision>Vaccinationsbevis verifiering</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <CodesignKey>Apple Development: Henrik Bengtsson (J583H872S3)</CodesignKey>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARMv7, ARMv7s, ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Distribution: Sondaica Technology AB (2Q9643BKQ5)</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <DeviceSpecificBuild>
+    </DeviceSpecificBuild>
+    <CodesignProvision>Vaccinationsbevis Verifiering</CodesignProvision>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\QRScanningService.cs" />
+    <Compile Include="Services\ScannerView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\58-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\80-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
+    <PackageReference Include="Xamarin.TestCloud.Agent" Version="0.23.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="PeterO.Cbor">
+      <Version>4.4.4</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>3.1.0-beta2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\VaccinbevisVerifiering\VaccinbevisVerifiering.csproj">
+      <Project>{E3084931-0489-422D-BFBF-BAE07FBB1BA1}</Project>
+      <Name>VaccinbevisVerifiering</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scan.png" />
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\digg_centered.png">
+      <Link>Resources\digg_centered.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\fohm_logo.png">
+      <Link>Resources\fohm_logo.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ehm_logo.png">
+      <Link>Resources\ehm_logo.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ValueSets\vaccine-mah-manf.json">
+      <Link>Resources\ValueSets\vaccine-mah-manf.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ValueSets\vaccine-prophylaxis.json">
+      <Link>Resources\ValueSets\vaccine-prophylaxis.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ValueSets\disease-agent-targeted.json">
+      <Link>Resources\ValueSets\disease-agent-targeted.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ValueSets\test-manf.json">
+      <Link>Resources\ValueSets\test-manf.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ValueSets\test-result.json">
+      <Link>Resources\ValueSets\test-result.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ValueSets\vaccine-medicinal-product.json">
+      <Link>Resources\ValueSets\vaccine-medicinal-product.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ValueSets\ValueSet.json">
+      <Link>Resources\ValueSets\ValueSet.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\Trusts\jwks.json">
+      <Link>Resources\Trusts\jwks.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\Trusts\DscTrustList.json">
+      <Link>Resources\Trusts\DscTrustList.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\mobil.png">
+      <Link>Resources\mobil.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\flagga.png">
+      <Link>Resources\flagga.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\info2.png">
+      <Link>Resources\info2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\ok.png">
+      <Link>Resources\ok.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\fail.png">
+      <Link>Resources\fail.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\flash.png">
+      <Link>Resources\flash.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\avbryt.png">
+      <Link>Resources\avbryt.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\flash_off.png">
+      <Link>Resources\flash_off.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\Vaccinationsregler.json">
+      <Link>Resources\Vaccinationsregler.json</Link>
+    </BundleResource>
+  </ItemGroup>
+</Project>

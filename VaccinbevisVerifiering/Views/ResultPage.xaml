@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resource="clr-namespace:VaccinbevisVerifiering.Resources"
+             xmlns:local="clr-namespace:VaccinbevisVerifiering"
+             xmlns:viewModels="clr-namespace:VaccinbevisVerifiering.ViewModels"
+             x:Class="VaccinbevisVerifiering.Views.ResultPage"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.BindingContext>
+        <viewModels:ResultViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewModels:LabelColorConverter x:Key="LabelColorConverter"></viewModels:LabelColorConverter>
+            <viewModels:LabelVisibleConverter x:Key="LabelVisibleConverter"></viewModels:LabelVisibleConverter>
+            <viewModels:ListVisibleConverter x:Key="ListVisibleConverter"></viewModels:ListVisibleConverter>
+
+            <Thickness x:Key="SmallTopMargin">0,10,0,0</Thickness> 
+
+            <Color x:Key="ThemeBackgroundDetailColor">#F0F0F0</Color>
+            <Color x:Key="ThemeTextColor">#000000</Color>
+
+            <Style TargetType="BoxView" x:Key="HorizontalSeparatorBoxViewStyle">
+                <Setter Property="HeightRequest" Value="1.5"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ThemeBackgroundDetailColor}"/>
+            </Style>
+
+            <Style TargetType="Label" >
+                <Setter Property="TextColor" Value="{StaticResource ThemeTextColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView IsVisible="{Binding IsVisible}" BackgroundColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}">
+        <AbsoluteLayout x:Name="ViewLayout" BackgroundColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}">
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 0.95">
+                <ScrollView Padding="0,20,0,0">
+                    <Frame HasShadow="True"
+                       BorderColor="White"
+                       CornerRadius="20"
+                       Margin="0"
+                       BackgroundColor="White" VerticalOptions="FillAndExpand" >
+                    <StackLayout>
+                        <Image Source="ok.png" IsVisible="{Binding IsResultOK}" HeightRequest="100" HorizontalOptions="Center"/>
+                        <Image Source="fail.png" IsVisible="{Binding IsResultNotOK}" HeightRequest="100" HorizontalOptions="Center"/>
+                        <Label x:Name="labelResultHeader" IsVisible="{Binding IsVisible}" Text="{Binding ResultHeader}" FontSize="Title" BackgroundColor="White" FontAttributes="Bold" TextColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}" Padding="30,0,30,0" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                        <Label x:Name="labelResultText" IsVisible="{Binding IsVisible}" Text="{Binding ResultText}" FontSize="Large" BackgroundColor="White" FontAttributes="Bold" TextColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}" Padding="30,0,30,0" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment ="Center"/>
+                        <FlexLayout Direction="Column" >
+                            <Label Text="{x:Static resource:AppResources.FirstnameLabel}" FontSize="Medium" Padding="10,5,10,0" Margin="0" TextColor="#695f59" IsVisible="{Binding IsResultOK}"/>
+                                    <Label x:Name="labelFirstname" Text="{Binding Subject.Firstname}" FontSize="Large" FontAttributes="Bold" IsVisible="{Binding IsResultOK}" TextColor="#695f59" Padding="10,0,10,0" Margin="0" />
+                                    <Label Text="{x:Static resource:AppResources.FamilynameLabel}" FontSize="Medium" Padding="10,5,10,0" Margin="0" TextColor="#695f59" IsVisible="{Binding IsResultOK}"/>
+                                    <Label x:Name="labelFamilyname" Text="{Binding Subject.Familyname}" FontSize="Large" FontAttributes="Bold" IsVisible="{Binding IsResultOK}" TextColor="#695f59" Padding="10,0,10,0" Margin="0" />
+                                    <Label Text="{x:Static resource:AppResources.TranNameLabel}" FontSize="Medium" Padding="10,5,10,0" Margin="0" TextColor="#695f59" IsVisible="{Binding IsResultOK}"/>
+                                    <Label x:Name="labelTranName" Text="{Binding Subject.TranName}" FontSize="Medium" FontAttributes="Bold" IsVisible="{Binding IsResultOK}" TextColor="#695f59" Padding="10,0,10,0" Margin="0" />
+                                    <Label Text="{x:Static resource:AppResources.BirthDateLabel}" FontSize="Medium" Padding="10,5,10,0" Margin="0" TextColor="#695f59" IsVisible="{Binding IsResultOK}"/>
+                                    <Label x:Name="labelBirthDate" Text="{Binding Subject.DateOfBirth}" FontSize="Large" FontAttributes="Bold" IsVisible="{Binding IsResultOK}" TextColor="#695f59" Padding="10,0,10,0" Margin="0" />
+                        </FlexLayout>
+                        <Button Text="{x:Static resource:AppResources.ScanAgainButtonText}" Margin="20" HorizontalOptions="CenterAndExpand" Command="{Binding ScanCommand}" 
+                    BackgroundColor="Black" TextColor="White" Padding="30,20,30,20"
+                    FontAttributes="Bold" FontSize="Large" CornerRadius="35" />
+                        <Button Text="{x:Static resource:AppResources.ScanCancelText}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Command="{Binding CancelCommand}" 
+                    BackgroundColor="Transparent" BorderColor="#695f59" TextColor="#695f59" BorderWidth="2" Padding="70,20,70,20"
+                    FontAttributes="Bold" FontSize="Large" CornerRadius="35" />
+                        
+                    </StackLayout>
+                        </Frame>
+                </ScrollView>
+            </StackLayout>
+        </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
