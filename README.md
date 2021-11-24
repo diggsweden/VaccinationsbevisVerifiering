@@ -1,29 +1,33 @@
 ![Logo](https://docs.swedenconnect.se/technical-framework/latest/img/digg_centered.png)
 
-# DCCValidator
+# Vaccinationsbevis verifiering
 
-Xamarin App for validating EU Digital Covid Certificate
+Xamarin Application for verifying EU Digital Covid Certificate based on
+ specific business rules for a specific use case.
 
 ---
 
-## About DCC Validator
+## About Vaccinationsbevis verifiering
 
-This GitHub-repository contains a reference implementation for the validation of the EU Digital Covid Certificate
+This GitHub-repository contains a reference implementation for the validation
+of the EU Digital Covid Certificate, with the purpose of verifying vaccination
+events in regards to specific business rules for a specific use case.
 
 The solution is developed by Swedish Agency for Digital Government (DIGG).
 
 
 ## Components
 
-* [DGCValidator] - The Common Xamarin code.
+* [VaccinbevisVerifiering] - The Common Xamarin code.
 
-* [DGCValidator.Android] - Android specific code.
+* [VaccinbevisVerifiering.Android] - Android specific code.
 
-* [DGCValidator.iOS] - iOS Specific code.
+* [VaccinbevisVerifiering.iOS] - iOS Specific code.
 
-## External resources
+## Resources
 
-DCC validator downloads, and caches external resources that are used during the verification process.
+### DCC Trust Point
+Vaccinationsbevis Verifiering downloads, and caches resources that are used during the verification process.
 The application downloads its resources once every 24 hours, when internet connectivity is available.
 In the event that no internet connectivity is available or that the resources can't be downloaded, then
 the cached version of the resources are used until they can be downloaded and cached once again.
@@ -43,6 +47,9 @@ as shown in the following illustration:
 
 More information about the Swedish DCC Trust Point can be found at [DCC-trust](https://github.com/DIGGSweden/dgc-trust)
 
+### Specific Business rules
+Vaccinationsbevis Verifiering can download the currently active business rules for the applications
+specific use case.
 
 ## Test Certificates
 
@@ -50,7 +57,7 @@ The following certificates can be used in the QA-environment.
 
 ### Vaccination certificates
 
-#### Valid Signature (_Signature public key present at [DGCG-QA](https://dccg-qa.covidbevis.se/tp/)_)
+#### Valid Signature (_Signature public key present at [DCC Trust Point - QA](https://dccg-qa.covidbevis.se/tp/)_)
 
 __Valid through 2023-07-01, Vaccine Comirnaty, Dose 1/2__
 
@@ -76,7 +83,7 @@ __Expired, Vaccine Comirnaty, Dose 2/2__
 
 ![Dose 2 of 2](readme-resources/expired.png)
 
-#### Invalid Signature (_Signature public key __not__ present at [DGCG-QA](https://dccg-qa.covidbevis.se/tp/)_)
+#### Invalid Signature (_Signature public key __not__ present at [DCC Trust Point - QA](https://dccg-qa.covidbevis.se/tp/)_)
 
 __Invalid signer & expired__
 
