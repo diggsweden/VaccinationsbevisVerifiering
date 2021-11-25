@@ -36,7 +36,9 @@ namespace VaccinbevisVerifiering.Droid.Services
         private Paint pressedPaint;
         private Android.Graphics.Bitmap litTorchIcon;
         private Android.Graphics.Bitmap unlitTorchIcon;
+        private Android.Graphics.Bitmap cancelIcon;
         private Rect torchIconDimRect;
+        private Rect cancelIconDimRect;
         private bool hasTorch = false;
         private bool torchOn = false;
         private bool cancelPressed = false;
@@ -72,6 +74,7 @@ namespace VaccinbevisVerifiering.Droid.Services
                 torchIconDimRect = new Rect(0, 0, iconWidth, iconHeight);
                 litTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash, iconWidth, iconHeight);
                 unlitTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash_off, iconWidth, iconHeight);
+                cancelIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.avbryt, iconWidth, iconHeight);
             }
             // Initialize these once for performance rather than calling them every time in onDraw()
             defaultPaint = new Paint(PaintFlags.AntiAlias);
@@ -93,11 +96,40 @@ namespace VaccinbevisVerifiering.Droid.Services
 
             return framingRect;
         }
+        Rect GetCancelButtonRect()
+        {
+            var metrics = Resources.DisplayMetrics;
+            int height = metrics.HeightPixels / 8;
+            int width = height;
+            int leftOffset = metrics.WidthPixels / 2 - width / 2;
+            int topOffset = metrics.HeightPixels * 4 / 5;
+            var cancelRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
+
+            return cancelRect;
+        }
+
+        Rect GetCancelIconRect()
+        {
+            var metrics = Resources.DisplayMetrics;
+            int height = metrics.HeightPixels / 8;
+            int width = height;
+            int leftOffset = metrics.WidthPixels / 2 - width / 2;
+            int topOffset = metrics.HeightPixels * 4 / 5;
+            var torchRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
+
+            return torchRect;
+        }
+
+        Rect GetCancelIconDimRect()
+        {
+            return cancelIconDimRect;
+        }
 
         Rect GetTorchIconDimRect()
         {
             return torchIconDimRect;
         }
+
 
         //The Rect used to draw the icon
         Rect GetTorchIconRect()
@@ -137,14 +169,15 @@ namespace VaccinbevisVerifiering.Droid.Services
 			var width = canvas.Width;
 			var height = canvas.Height;
 
-            //var cancelBtn = GetCancelButtonRect();
+            var cancelBtn = GetCancelButtonRect();
             var torchBtn = GetTorchButtonRect();
 
             //Draw buttons
             defaultPaint.Color = Color.Black;
             defaultPaint.Alpha = 255;
             pressedPaint.Color = new Color(96, 97, 104);
-
+            //canvas.DrawRect(cancelBtn, cancelPressed ? pressedPaint : defaultPaint);
+            canvas.DrawBitmap(cancelIcon, GetCancelIconDimRect(), GetCancelIconRect(), defaultPaint);
             if (hasTorch)
             {
                 //canvas.DrawRect(torchBtn, torchOn ? pressedPaint : defaultPaint);
@@ -180,41 +213,23 @@ namespace VaccinbevisVerifiering.Droid.Services
         {
             if (me.Action == MotionEventActions.Down)
             {
-                //if (GetCancelButtonRect().Contains((int)me.RawX, (int)me.RawY))
-                //{
-                //    cancelPressed = true;
-                //    this.Invalidate();
-                //    OnUnload();
-                //    scanner.Cancel();
-                //}
+                if (GetCancelButtonRect().Contains((int)me.RawX, (int)me.RawY))
+                {
+                    cancelPressed = true;
+                    this.Invalidate();
+                    scanner.Cancel();
+                }
                 if (GetTorchButtonRect().Contains((int)me.RawX, (int)me.RawY))
                 {
                     scanner.ToggleTorch();
                     torchOn = !torchOn;
                     this.Invalidate();
                 }
-                //else if (GetProblemButtonRect().Contains((int)me.RawX, (int)me.RawY))
-                //{
-                //    problemPressed = true;
-                //    this.Invalidate();
-
-                //    if (parentActivity == null)
-                //    {
-                //        Intent intent = new Intent();
-                //        intent.SetClass(context, typeof(ManualEntryActivity));
-                //        context.StartActivity(intent);
-                //    }
-                //    else
-                //    {
-                //        parentActivity.GetManualEntry();
-                //    }
-                //    OnUnload();
-                //    scanner.Cancel();
-                //}
                 return true;
             }
             else
                 return false;
         }
+        
     }
 }
