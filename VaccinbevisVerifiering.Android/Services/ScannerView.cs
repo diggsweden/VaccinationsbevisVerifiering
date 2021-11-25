@@ -29,6 +29,7 @@ namespace VaccinbevisVerifiering.Droid.Services
         Color resultColor;
         Color frameColor;
         Color laserColor;
+        Color textColor;
 
         int scannerAlpha;
         List<ZXing.ResultPoint> possibleResultPoints;
@@ -42,7 +43,7 @@ namespace VaccinbevisVerifiering.Droid.Services
         private bool hasTorch = false;
         private bool torchOn = false;
         private bool cancelPressed = false;
-        readonly string scanText;
+        private string scanText;
         private Context context;
         private MobileBarcodeScanner scanner;
 
@@ -55,6 +56,7 @@ namespace VaccinbevisVerifiering.Droid.Services
             resultColor = Color.Red; // resources.getColor(R.color.result_view);
             frameColor = Color.Black; // resources.getColor(R.color.viewfinder_frame);
             laserColor = Color.Red; //  resources.getColor(R.color.viewfinder_laser);
+            textColor = Color.White;
             scannerAlpha = 0;
             possibleResultPoints = new List<ZXing.ResultPoint>(5);
 
@@ -96,13 +98,16 @@ namespace VaccinbevisVerifiering.Droid.Services
 
             return framingRect;
         }
+
+        public string TopText { get; set; }
+
         Rect GetCancelButtonRect()
         {
             var metrics = Resources.DisplayMetrics;
-            int height = metrics.HeightPixels / 8;
+            int height = metrics.HeightPixels / 10;
             int width = height;
             int leftOffset = metrics.WidthPixels / 2 - width / 2;
-            int topOffset = metrics.HeightPixels * 4 / 5;
+            int topOffset = metrics.HeightPixels * 8 / 9;
             var cancelRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
             return cancelRect;
@@ -111,10 +116,10 @@ namespace VaccinbevisVerifiering.Droid.Services
         Rect GetCancelIconRect()
         {
             var metrics = Resources.DisplayMetrics;
-            int height = metrics.HeightPixels / 8;
+            int height = metrics.HeightPixels / 10;
             int width = height;
             int leftOffset = metrics.WidthPixels / 2 - width / 2;
-            int topOffset = metrics.HeightPixels * 4 / 5;
+            int topOffset = metrics.HeightPixels * 7 / 8;
             var torchRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
             return torchRect;
@@ -130,28 +135,28 @@ namespace VaccinbevisVerifiering.Droid.Services
             return torchIconDimRect;
         }
 
-
         //The Rect used to draw the icon
         Rect GetTorchIconRect()
         {
             var metrics = Resources.DisplayMetrics;
-            int height = metrics.HeightPixels / 8;
+            int height = metrics.HeightPixels / 10;
             int width = height;
             int leftOffset = metrics.WidthPixels / 2 - width / 2;
-            int topOffset = metrics.HeightPixels / 3 * 2;
+            int topOffset = metrics.HeightPixels / 4 * 3;
             var torchRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
             return torchRect;
         }
 
-        //The Rect used to detect touch
+
+            //The Rect used to detect touch
         Rect GetTorchButtonRect()
         {
             var metrics = Resources.DisplayMetrics;
-            int height = metrics.HeightPixels / 8;
+            int height = metrics.HeightPixels / 10;
             int width = height;
             int leftOffset = metrics.WidthPixels / 2 - width / 2;
-            int topOffset = metrics.HeightPixels / 3 * 2;
+            int topOffset = metrics.HeightPixels / 4 * 3;
             var torchRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
             return torchRect;
@@ -176,12 +181,62 @@ namespace VaccinbevisVerifiering.Droid.Services
             defaultPaint.Color = Color.Black;
             defaultPaint.Alpha = 255;
             pressedPaint.Color = new Color(96, 97, 104);
-            //canvas.DrawRect(cancelBtn, cancelPressed ? pressedPaint : defaultPaint);
+
+            paint.Color = resultBitmap != null ? resultColor : maskColor;
+            paint.Alpha = 100;
+
+            canvas.DrawRect(0, 0, width, frame.Top, paint);
+            canvas.DrawRect(0, frame.Bottom + 1, width, height, paint);
+
+
+            //var textPaint = new TextPaint();
+            //textPaint.Color = Color.White;
+            //textPaint.TextSize = 16 * scale;
+
+            //var topTextLayout = new StaticLayout(scanText, textPaint, canvas.Width, Android.Text.Layout.Alignment.AlignCenter, 1.0f, 0.0f, false);
+            //canvas.Save();
+            //var topBounds = new Rect();
+
+            //textPaint.GetTextBounds(this.TopText, 0, this.TopText.Length, topBounds);
+            //canvas.Translate(0, frame.Top / 2 - (topTextLayout.Height / 2));
+
+            ////canvas.Translate(topBounds.Left, topBounds.Bottom);
+            //topTextLayout.Draw(canvas);
+
+            //canvas.Restore();
+
+
+
+
+
+            if (resultBitmap != null)
+            {
+                paint.Alpha = CURRENT_POINT_OPACITY;
+                canvas.DrawBitmap(resultBitmap, null, new RectF(frame.Left, frame.Top, frame.Right, frame.Bottom), paint);
+            }
+            else
+            {
+                // Draw a two pixel solid black border inside the framing rect
+                paint.Color = frameColor;
+
+                // Draw a red "laser scanner" line through the middle to show decoding is active
+                paint.Color = laserColor;
+                paint.Alpha = SCANNER_ALPHA[scannerAlpha];
+                scannerAlpha = (scannerAlpha + 1) % SCANNER_ALPHA.Length;
+                var middle = frame.Height() / 2 + frame.Top;
+
+
+                canvas.DrawRect(0, middle - 1, width, middle + 2, paint);
+
+                PostInvalidateDelayed(ANIMATION_DELAY,
+                                      frame.Left - POINT_SIZE,
+                                      frame.Top - POINT_SIZE,
+                                      frame.Right + POINT_SIZE,
+                                      frame.Bottom + POINT_SIZE);
+            }
             canvas.DrawBitmap(cancelIcon, GetCancelIconDimRect(), GetCancelIconRect(), defaultPaint);
             if (hasTorch)
             {
-                //canvas.DrawRect(torchBtn, torchOn ? pressedPaint : defaultPaint);
-                //Draw button icons
                 canvas.DrawBitmap(torchOn ? litTorchIcon : unlitTorchIcon, GetTorchIconDimRect(), GetTorchIconRect(), defaultPaint);
             }
 
