@@ -34,7 +34,7 @@ namespace VaccinbevisVerifiering.ViewModels
 
         public String ValidationRulesVersion
         {
-            get { return AppResources.ValidationRulesVersion + " " + App.CertificateManager.VaccinRules.ValueSetDate; }
+            get { return AppResources.ValidationRulesVersion + " " + App.CertificateManager.VaccinRules.ValueSetDate.Date; }
         }
 
         public static DateTime SecondsFromEpocToDateTime(long sec)
