@@ -32,6 +32,11 @@ namespace VaccinbevisVerifiering.ViewModels
             get { return AppResources.KeyVersion + " " + SecondsFromEpocToDateTime(App.CertificateManager.TrustList.Iat).ToString(); }
         }
 
+        public String ValidationRulesVersion
+        {
+            get { return AppResources.ValidationRulesVersion + " " + App.CertificateManager.VaccinRules.ValueSetDate; }
+        }
+
         public static DateTime SecondsFromEpocToDateTime(long sec)
         {
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);

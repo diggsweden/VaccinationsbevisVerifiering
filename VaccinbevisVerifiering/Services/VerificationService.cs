@@ -50,7 +50,7 @@ namespace VaccinbevisVerifiering.Services
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.ToString());
+                //Console.WriteLine(e.ToString());
                 throw e;
             }
             return null;

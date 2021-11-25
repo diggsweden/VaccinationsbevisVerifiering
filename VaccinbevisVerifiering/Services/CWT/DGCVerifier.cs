@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using VaccinbevisVerifiering.Services.CWT.Certificates;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.X509;
+using VaccinbevisVerifiering.Resources;
 
 /**
 * A HCert verifier class.
@@ -42,7 +43,7 @@ namespace VaccinbevisVerifiering.Services.CWT
 
             if (kid == null && country == null)
             {
-                throw new Exception("Signed DCC does not contain kid or country - cannot find certificate");
+                throw new Exception(AppResources.InvalidSigningCertificate);
             }
 
             List<AsymmetricKeyParameter> certs = certificateProvider.GetCertificates(country, kid);
@@ -79,17 +80,17 @@ namespace VaccinbevisVerifiering.Services.CWT
 
             foreach (AsymmetricKeyParameter cert in certs)
             {
-                Console.WriteLine("Attempting HCERT signature verification using certificate");// '{0}'", cert.Subject);//getSubjectX500Principal().getName()) ;
+                //Console.WriteLine("Attempting HCERT signature verification using certificate");// '{0}'", cert.Subject);//getSubjectX500Principal().getName()) ;
 
                 try {
                     byte[] key = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(cert).GetEncoded();
                     obj.VerifySignature(key);
                     string keyString = System.Text.Encoding.UTF8.GetString(key);
-                    Console.WriteLine("HCERT signature verification succeeded using certificate");// '{0}'", cert.Subject); //getSubjectX500Principal().getName());
+                    //Console.WriteLine("HCERT signature verification succeeded using certificate");// '{0}'", cert.Subject); //getSubjectX500Principal().getName());
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(String.Format("HCERT signature verification failed using certificate '{0}' - {1}",cert, e.Message));
+                    //Console.WriteLine(String.Format("HCERT signature verification failed using certificate '{0}' - {1}",cert, e.Message));
                     continue;
                 }
 
@@ -102,12 +103,13 @@ namespace VaccinbevisVerifiering.Services.CWT
                     vacProof.ExpirationDate = expiration.Value;
                     if (DateTime.UtcNow.CompareTo(expiration) >= 0)
                     {
-                        throw new CertificateExpiredException(string.Format("DCC has expired {0}",expiration.Value));
+                        string message = AppResources.DCCExpired + " {0}";
+                        throw new CertificateExpiredException(string.Format(message,expiration.Value.ToShortDateString()));
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Signed HCERT did not contain an expiration time - assuming it is valid");
+                    //Console.WriteLine("Signed HCERT did not contain an expiration time - assuming it is valid");
                 }
                 DateTime? issuedAt = cwt.GetIssuedAt();
                 if(issuedAt.HasValue)
@@ -120,11 +122,11 @@ namespace VaccinbevisVerifiering.Services.CWT
 
             if (certs.Count<=0)
             {
-                throw new CertificateUnknownException("No signer certificates could be found");
+                throw new CertificateUnknownException(AppResources.NoSigningCertifcateCouldBeFound);
             }
             else
             {
-                throw new CertificateValidationException("Signature verification failed for all attempted keys");
+                throw new CertificateValidationException(AppResources.InvalidSigningCertificate);
             }
         }
     }

@@ -78,6 +78,18 @@
     <data name="KeyVersion" xml:space="preserve">
         <value>Nycklar hämtade: </value>
     </data>
+    <data name="ValidationRulesVersion" xml:space="preserve">
+        <value>Valideringsregelversion: </value>
+    </data>
+    <data name="InvalidSigningCertificate" xml:space="preserve">
+      <value>Ogiltigt signerings certifikat</value>
+    </data>
+    <data name="NoSigningCertifcateCouldBeFound" xml:space="preserve">
+      <value>Inget signerings certifikat hittades</value>
+    </data>
+    <data name="DCCExpired" xml:space="preserve">
+      <value>Vaccinationsbevis utgånget</value>
+    </data>
 
 
     <!-- Subject Resources -->

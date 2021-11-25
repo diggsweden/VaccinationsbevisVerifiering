@@ -183,6 +183,18 @@
   <data name="KeyVersion" xml:space="preserve">
     <value>Keys retrived: </value>
   </data>
+  <data name="ValidationRulesVersion" xml:space="preserve">
+    <value>Validarion rule version: </value>
+  </data>
+  <data name="InvalidSigningCertificate" xml:space="preserve">
+    <value>Invalid signing certificate</value>
+  </data>
+  <data name="NoSigningCertifcateCouldBeFound" xml:space="preserve">
+    <value>No signing certificate could be found</value>
+  </data>
+  <data name="DCCExpired" xml:space="preserve">
+    <value>Vaccination certificate expired</value>
+  </data>
 
 
   <data name="FirstnameLabel" xml:space="preserve">

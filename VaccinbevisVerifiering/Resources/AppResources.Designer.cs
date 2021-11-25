@@ -179,6 +179,30 @@ namespace VaccinbevisVerifiering.Resources {
             }
         }
         
+        public static string ValidationRulesVersion {
+            get {
+                return ResourceManager.GetString("ValidationRulesVersion", resourceCulture);
+            }
+        }
+        
+        public static string InvalidSigningCertificate {
+            get {
+                return ResourceManager.GetString("InvalidSigningCertificate", resourceCulture);
+            }
+        }
+        
+        public static string NoSigningCertifcateCouldBeFound {
+            get {
+                return ResourceManager.GetString("NoSigningCertifcateCouldBeFound", resourceCulture);
+            }
+        }
+        
+        public static string DCCExpired {
+            get {
+                return ResourceManager.GetString("DCCExpired", resourceCulture);
+            }
+        }
+        
         public static string FirstnameLabel {
             get {
                 return ResourceManager.GetString("FirstnameLabel", resourceCulture);
