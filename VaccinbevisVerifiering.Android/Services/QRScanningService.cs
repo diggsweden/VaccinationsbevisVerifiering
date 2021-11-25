@@ -29,8 +29,8 @@ namespace VaccinbevisVerifiering.Droid.Services
                     ZXing.BarcodeFormat.QR_CODE
                 },
                 UseNativeScanning = true,
-                TryHarder=true,
-                AutoRotate = true
+                TryHarder = false,
+                AutoRotate = false
             };
 
             var scanner = new MobileBarcodeScanner()
@@ -47,7 +47,7 @@ namespace VaccinbevisVerifiering.Droid.Services
             //scanner.Scan().ContinueWith(t => { //Handle Result });
                 try
             {
-                var scanResult = await scanner.Scan();
+                var scanResult = await scanner.Scan(optionsCustom);
                 if (scanResult != null)
                 {
                     return scanResult.Text;
