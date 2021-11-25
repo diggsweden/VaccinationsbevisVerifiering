@@ -203,6 +203,12 @@ namespace VaccinbevisVerifiering.Resources {
             }
         }
         
+        public static string UnvalidCode {
+            get {
+                return ResourceManager.GetString("UnvalidCode", resourceCulture);
+            }
+        }
+        
         public static string FirstnameLabel {
             get {
                 return ResourceManager.GetString("FirstnameLabel", resourceCulture);

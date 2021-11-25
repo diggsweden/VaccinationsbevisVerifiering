@@ -238,7 +238,7 @@ namespace VaccinbevisVerifiering.ViewModels
                     }
                     else
                     {
-                        ResultText = AppResources.ErrorReadingText + ", " + scanResult;
+                        ResultText = AppResources.ErrorReadingText;
                         IsResultOK = false;
 
                     }
@@ -247,7 +247,7 @@ namespace VaccinbevisVerifiering.ViewModels
             catch (Exception ex)
             {
                 ResultHeader = AppResources.NotApprovedHeader;
-                ResultText = ex.Message;
+                ResultText = AppResources.UnvalidCode;
                 IsResultOK = false;
             }
             timer = new System.Timers.Timer();

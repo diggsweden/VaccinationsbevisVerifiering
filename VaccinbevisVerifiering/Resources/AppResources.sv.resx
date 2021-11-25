@@ -19,7 +19,7 @@
         <value>Verifiering</value>
     </data>
 	<data name="InformationText" xml:space="preserve">
-        <value>Här kan du verifiera ett covidbevis genom att skanna med din kamera</value>
+        <value>Här kan du verifiera ett vaccinationsbevis genom att skanna med din kamera</value>
     </data>
 	<data name="ScanButtonText" xml:space="preserve">
         <value>Skanna</value>
@@ -28,7 +28,7 @@
         <value>Skanna nästa</value>
     </data>
     <data name="LinkText" xml:space="preserve">
-        <value>Hur man använder vaccinationsbevis verifiering</value>
+        <value>Hur man använder vaccinationsbevis verifiering     </value>
     </data>
 	<data name="ScanTopText" xml:space="preserve">
         <value>Skanna QR kod</value>
@@ -90,6 +90,10 @@
     <data name="DCCExpired" xml:space="preserve">
       <value>Vaccinationsbevis utgånget</value>
     </data>
+    <data name="UnvalidCode" xml:space="preserve">
+      <value>Ogiltig QR kod</value>
+    </data>
+
 
 
     <!-- Subject Resources -->

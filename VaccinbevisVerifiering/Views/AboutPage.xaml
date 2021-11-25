@@ -34,7 +34,7 @@
                 <Label x:Name="labelValidationRuleVersion" Text="{Binding ValidationRulesVersion}" FontSize="18" TextColor="#695f59" Padding="30,5,30,10"/>
             </StackLayout>
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 0.35" Padding="0,0,0,0" >
-                <Image Source="digg_centered_2.png" WidthRequest="200" HorizontalOptions="Center" Margin="30" AbsoluteLayout.LayoutBounds="20, 40, 50, 0.50"/>
+                <Image Source="digg_centered_2.png" WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="30" AbsoluteLayout.LayoutBounds="20, 40, 50, 0.50"/>
                 <Image Source="flagga.png" HeightRequest="30" VerticalOptions="End" HorizontalOptions="CenterAndExpand" />
             </StackLayout>
         </AbsoluteLayout>

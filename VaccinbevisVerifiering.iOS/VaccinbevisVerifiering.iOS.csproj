@@ -238,6 +238,9 @@
     <BundleResource Include="..\VaccinbevisVerifiering\Resources\Vaccinationsregler.json">
       <Link>Resources\Vaccinationsregler.json</Link>
     </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\digg_centered_2.png">
+      <Link>Resources\digg_centered_2.png</Link>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork%402x" />

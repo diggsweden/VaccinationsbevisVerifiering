@@ -195,7 +195,9 @@
   <data name="DCCExpired" xml:space="preserve">
     <value>Vaccination certificate expired</value>
   </data>
-
+  <data name="UnvalidCode" xml:space="preserve">
+    <value>Unvalid QR code</value>
+  </data>
 
   <data name="FirstnameLabel" xml:space="preserve">
     <value>First name: </value>
