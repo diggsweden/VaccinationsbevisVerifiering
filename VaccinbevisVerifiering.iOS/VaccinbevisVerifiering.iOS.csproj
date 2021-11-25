@@ -29,8 +29,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>Vaccinationsbevis verifiering</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Sondaica Technology AB (2Q9643BKQ5)</CodesignKey>
+    <CodesignProvision>Vaccinationsbevis Verifiering</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

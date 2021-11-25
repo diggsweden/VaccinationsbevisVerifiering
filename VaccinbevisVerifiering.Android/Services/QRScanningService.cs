@@ -26,10 +26,10 @@ namespace VaccinbevisVerifiering.Droid.Services
             var optionsCustom = new MobileBarcodeScanningOptions
             {
                 PossibleFormats = new List<ZXing.BarcodeFormat>() {
-                    ZXing.BarcodeFormat.AZTEC,
                     ZXing.BarcodeFormat.QR_CODE
                 },
                 UseNativeScanning = true,
+                TryHarder=true,
                 AutoRotate = true
             };
 
