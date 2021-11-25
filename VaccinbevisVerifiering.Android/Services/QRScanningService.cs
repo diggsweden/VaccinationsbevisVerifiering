@@ -13,6 +13,7 @@ using ZXing.Mobile;
 using Xamarin.Forms;
 using VaccinbevisVerifiering.Services;
 using VaccinbevisVerifiering.Resources;
+using Application = Android.App.Application;
 
 [assembly: Dependency(typeof(VaccinbevisVerifiering.Droid.Services.QRScanningService))]
 
@@ -40,7 +41,11 @@ namespace VaccinbevisVerifiering.Droid.Services
                 CancelButtonText = AppResources.ScanCancelText,
             };
 
-            try
+            scanner.UseCustomOverlay = true;
+            var customOverlay = new ScannerView(Application.Context, AppResources.ScanTopText, scanner);
+            scanner.CustomOverlay = customOverlay;
+            //scanner.Scan().ContinueWith(t => { //Handle Result });
+                try
             {
                 var scanResult = await scanner.Scan();
                 if (scanResult != null)
