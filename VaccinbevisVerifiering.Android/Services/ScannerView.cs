@@ -42,14 +42,15 @@ namespace VaccinbevisVerifiering.Droid.Services
         private Rect cancelIconDimRect;
         private bool hasTorch = false;
         private bool torchOn = false;
+        readonly string scanText;
         private bool cancelPressed = false;
-        private string scanText;
         private Context context;
         private MobileBarcodeScanner scanner;
 
         public ScannerView(Context context, string scanText, MobileBarcodeScanner scanner) : base(context)
         {
             this.scanner = scanner;
+            this.scanText = scanText ?? "";
             // Initialize these once for performance rather than calling them every time in onDraw().
             paint = new Paint(PaintFlags.AntiAlias);
             maskColor = Color.Gray; // resources.getColor(R.color.viewfinder_mask);
@@ -74,8 +75,8 @@ namespace VaccinbevisVerifiering.Droid.Services
                 int iconHeight = 248;
                 int iconWidth = 248;
                 torchIconDimRect = new Rect(0, 0, iconWidth, iconHeight);
-                litTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash, iconWidth, iconHeight);
-                unlitTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash_off, iconWidth, iconHeight);
+                litTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash_off, iconWidth, iconHeight);
+                unlitTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash, iconWidth, iconHeight);
                 cancelIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.avbryt, iconWidth, iconHeight);
             }
             // Initialize these once for performance rather than calling them every time in onDraw()
@@ -189,21 +190,21 @@ namespace VaccinbevisVerifiering.Droid.Services
             canvas.DrawRect(0, frame.Bottom + 1, width, height, paint);
 
 
-            //var textPaint = new TextPaint();
-            //textPaint.Color = Color.White;
-            //textPaint.TextSize = 16 * scale;
+            var textPaint = new TextPaint();
+            textPaint.Color = Color.White;
+            textPaint.TextSize = 26 * scale;
 
-            //var topTextLayout = new StaticLayout(scanText, textPaint, canvas.Width, Android.Text.Layout.Alignment.AlignCenter, 1.0f, 0.0f, false);
-            //canvas.Save();
-            //var topBounds = new Rect();
+            var topTextLayout = new StaticLayout(scanText, textPaint, canvas.Width, Android.Text.Layout.Alignment.AlignCenter, 1.0f, 0.0f, false);
+            canvas.Save();
+            var topBounds = new Rect();
 
-            //textPaint.GetTextBounds(this.TopText, 0, this.TopText.Length, topBounds);
-            //canvas.Translate(0, frame.Top / 2 - (topTextLayout.Height / 2));
+            textPaint.GetTextBounds(this.scanText, 0, this.scanText.Length, topBounds);
+            canvas.Translate(0, frame.Top / 2 - (topTextLayout.Height / 2));
 
-            ////canvas.Translate(topBounds.Left, topBounds.Bottom);
-            //topTextLayout.Draw(canvas);
+            //canvas.Translate(topBounds.Left, topBounds.Bottom);
+            topTextLayout.Draw(canvas);
 
-            //canvas.Restore();
+            canvas.Restore();
 
 
 
