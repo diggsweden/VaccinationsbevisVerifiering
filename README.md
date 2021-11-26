@@ -33,8 +33,8 @@ In the event that no internet connectivity is available or that the resources ca
 the cached version of the resources are used until they can be downloaded and cached once again.
 
 The application uses the Swedish DCC Trust Point to download its external resources 
-* QA-environment https://dccg-qa.covidbevis.se/tp/
-* Production-environment https://dccg.covidbevis.se/tp/
+* QA-environment https://dgcg-qa.covidbevis.se/tp/
+* Production-environment https://dgcg.covidbevis.se/tp/
 
 There are two resources that the application needs to perform the verification:
 * __Trust List__ - A list of all valid Signature public keys
@@ -57,7 +57,7 @@ The following certificates can be used in the QA-environment.
 
 ### Vaccination certificates
 
-#### Valid Signature (_Signature public key present at [DCC Trust Point - QA](https://dccg-qa.covidbevis.se/tp/)_)
+#### Valid Signature (_Signature public key present at [DCC Trust Point - QA](https://dgcg-qa.covidbevis.se/tp/)_)
 
 __Valid through 2023-07-01, Vaccine Comirnaty, Dose 1/2__
 
@@ -83,7 +83,7 @@ __Expired, Vaccine Comirnaty, Dose 2/2__
 
 ![Dose 2 of 2](readme-resources/expired.png)
 
-#### Invalid Signature (_Signature public key __not__ present at [DCC Trust Point - QA](https://dccg-qa.covidbevis.se/tp/)_)
+#### Invalid Signature (_Signature public key __not__ present at [DCC Trust Point - QA](https://dgcg-qa.covidbevis.se/tp/)_)
 
 __Invalid signer & expired__
 
