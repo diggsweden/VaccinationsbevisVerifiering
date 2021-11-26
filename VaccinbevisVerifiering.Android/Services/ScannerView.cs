@@ -235,14 +235,20 @@ namespace VaccinbevisVerifiering.Droid.Services
                                       frame.Right + POINT_SIZE,
                                       frame.Bottom + POINT_SIZE);
             }
-            canvas.DrawBitmap(cancelIcon, GetCancelIconDimRect(), GetCancelIconRect(), defaultPaint);
-            if (hasTorch)
-            {
-                canvas.DrawBitmap(torchOn ? litTorchIcon : unlitTorchIcon, GetTorchIconDimRect(), GetTorchIconRect(), defaultPaint);
-            }
+            if( cancelIcon != null && litTorchIcon != null && unlitTorchIcon != null)
+            { 
+            
+                canvas.DrawBitmap(cancelIcon, GetCancelIconDimRect(), GetCancelIconRect(), defaultPaint);
+            
 
+                if (hasTorch)
+                {
+                    canvas.DrawBitmap(torchOn ? litTorchIcon : unlitTorchIcon, GetTorchIconDimRect(), GetTorchIconRect(), defaultPaint);
+                }
+
+            }
             base.OnDraw(canvas);
-		}
+        }
 
         public void DrawResultBitmap(Android.Graphics.Bitmap barcode)
         {
