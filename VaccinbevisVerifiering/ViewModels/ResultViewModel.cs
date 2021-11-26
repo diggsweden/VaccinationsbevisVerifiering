@@ -247,7 +247,7 @@ namespace VaccinbevisVerifiering.ViewModels
             catch (Exception ex)
             {
                 ResultHeader = AppResources.NotApprovedHeader;
-                ResultText = AppResources.UnvalidCode;
+                ResultText = ex.Message;
                 IsResultOK = false;
             }
             timer = new System.Timers.Timer();

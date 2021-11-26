@@ -8,6 +8,7 @@ using VaccinbevisVerifiering.Services.DGC.V1;
 using ICSharpCode.SharpZipLib.Zip.Compression;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using PeterO.Cbor;
+using VaccinbevisVerifiering.Resources;
 
 namespace VaccinbevisVerifiering.Services
 {
@@ -46,6 +47,10 @@ namespace VaccinbevisVerifiering.Services
                     EU_DGC eU_DGC = GetVaccinationProofFromCbor(signedData);
                     vacProof.Dgc = eU_DGC;
                     return vacProof;
+                }
+                else
+                {
+                    throw new CertificateValidationException(AppResources.UnvalidCode);
                 }
             }
             catch(Exception e)
