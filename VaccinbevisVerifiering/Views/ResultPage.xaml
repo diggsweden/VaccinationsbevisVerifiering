@@ -31,8 +31,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView IsVisible="{Binding IsVisible}" BackgroundColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}">
-        <AbsoluteLayout x:Name="ViewLayout" BackgroundColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}">
+        <ScrollView >
+        <AbsoluteLayout IsVisible="{Binding IsVisible}" x:Name="ViewLayout" BackgroundColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}">
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 0.95">
                 <ScrollView Padding="0,20,0,0">
                     <Frame HasShadow="True"
@@ -67,6 +67,9 @@
                 </ScrollView>
             </StackLayout>
         </AbsoluteLayout>
+ <!--       <AbsoluteLayout IsVisible="{Binding !IsVisible}" x:Name="LoadingLayout" >
+            <ActivityIndicator IsRunning="true" />
+        </AbsoluteLayout> -->
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

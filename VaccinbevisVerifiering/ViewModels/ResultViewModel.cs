@@ -37,14 +37,24 @@ namespace VaccinbevisVerifiering.ViewModels
             _certs = new ObservableCollection<object>();
         }
 
-        public ICommand ScanCommand
+        //public ICommand ScanCommand
+        //{
+        //    get
+        //    {
+        //        return scanCommand ??
+        //        (scanCommand = new Command(async () => await Scan()));
+        //    }
+        //}
+        public ICommand ScanCommand => scanCommand ??
+        (scanCommand = new Command(async () =>
         {
-            get
+            if (timer != null)
             {
-                return scanCommand ??
-                (scanCommand = new Command(async () => await Scan()));
+                timer.Stop();
+                timer = null;
             }
-        }
+            MessagingCenter.Send(Application.Current, "Scan");
+        }));
 
         public ICommand CancelCommand => cancelCommand ??
         (cancelCommand = new Command(async () =>

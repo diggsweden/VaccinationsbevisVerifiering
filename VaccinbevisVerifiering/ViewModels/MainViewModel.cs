@@ -25,7 +25,23 @@ namespace VaccinbevisVerifiering.ViewModels
         {
             MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current, "Cancel", async (sender) =>
             {
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                try
+                {
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+                catch (Exception ex)
+                { }
+
+            });
+            MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current, "Scan", async (sender) =>
+            {
+                try
+                {
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+                catch (Exception ex)
+                { }
+                await Scan();
             });
         }
 
