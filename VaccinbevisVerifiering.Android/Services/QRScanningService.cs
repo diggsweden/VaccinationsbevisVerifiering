@@ -44,8 +44,7 @@ namespace VaccinbevisVerifiering.Droid.Services
             scanner.UseCustomOverlay = true;
             var customOverlay = new ScannerView(Application.Context, AppResources.ScanTopText, scanner);
             scanner.CustomOverlay = customOverlay;
-            //scanner.Scan().ContinueWith(t => { //Handle Result });
-                try
+            try
             {
                 var scanResult = await scanner.Scan(optionsCustom);
                 if (scanResult != null)
