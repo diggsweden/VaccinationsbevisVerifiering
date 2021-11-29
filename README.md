@@ -51,44 +51,25 @@ More information about the Swedish DCC Trust Point can be found at [DCC-trust](h
 Vaccinationsbevis Verifiering can download the currently active business rules for the applications
 specific use case.
 
-## Test Certificates
+## Test data
 
 The following certificates can be used in the QA-environment.
 
-### Vaccination certificates
-
-#### Valid Signature (_Signature public key present at [DCC Trust Point - QA](https://dgcg-qa.covidbevis.se/tp/)_)
-
-__Valid through 2023-07-01, Vaccine Comirnaty, Dose 1/2__
-
-![Dose 1 of 2](readme-resources/dose_1of2.png)
-
-__Valid through 2023-07-01, Vaccine Comirnaty, Dose 2/2__
-
-![Dose 2 of 2](readme-resources/dose_2of2.png)
-
-__Valid through 2023-07-01, Vaccine Comirnaty, Dose 3/2__
-
-![Dose 3 of 2](readme-resources/dose_3of2.png)
-
-__Valid through 2023-07-01, Vaccine Comirnaty, Dose 3/3__
-
-![Dose 3 of 3](readme-resources/dose_3of3.png)
-
-__Valid through 2023-07-01, Vaccine BBIBP-CorV, Dose 2/2__
-
-![Dose 2 of 2](readme-resources/vaccine_BBIBP-CorV.png)
-
-__Expired, Vaccine Comirnaty, Dose 2/2__
-
-![Dose 2 of 2](readme-resources/expired.png)
-
-#### Invalid Signature (_Signature public key __not__ present at [DCC Trust Point - QA](https://dgcg-qa.covidbevis.se/tp/)_)
-
-__Invalid signer & expired__
-
-![Invalid signer](readme-resources/invalid_signer.png)
-
+| Test case | Description | QR-code | Expected result |
+| ------------- | ------------- | :-------------: | :---------------: |
+| Fully vaccinated, quarantine period passed | Valid: 2023-07-01<br/>Vaccine: Comirnaty (EU/1/20/1528)<br/>Dose: 2/2<br/>Signature:Valid  | ![Dose 2 of 2](readme-resources/dose_2of2.png)  | ✔ |
+| Fully vaccinated, quarantine period passed | Valid: 2023-07-01<br/>Vaccine: Janssen (EU/1/20/1525)<br/>Dose: 1/1<br/>Signature:Valid  | ![Dose 1 of 1](readme-resources/janssen_1of1.png) | ✔ |
+| Booster dose within quarantine period | Vaccine: Comirnaty (EU/1/20/1528)<br/>Dose: 3/3<br/>Vaccination Date: <14 days ago<br/>Signature:Valid  | Create from https://dgc.a-sit.at/ehn/  | ✔ |
+| Booster dose within quarantine period | Vaccine: Janssen (EU/1/20/1525)<br/>Dose: 2/2<br/>Vaccination Date: <14 days ago<br/>Signature:Valid  | Create from https://dgc.a-sit.at/ehn/  | ✔ |
+| Expired |  | ![Dose 2 of 2](readme-resources/expired.png) | ❌ |
+| Invalid signature |  | ![Invalid signer](readme-resources/invalid_signer.png) | ❌ |
+| Invalid DCC type | Type: Recovered | ![Invalid type](readme-resources/recovered.png) | ❌ |
+| Invalid DCC type | Type: Tested | ![Invalid type](readme-resources/tested.png) | ❌ |
+| Not a DCC QR-code | Link to https://digg.se | ![Invalid QR code](readme-resources/digg_se.png) | ❌ |
+| Invalid vaccine | Valid: 2023-07-01<br/>Vaccine: BBIBP-CorV (BBIBP-CorV)<br/>Dose: 2/2<br/>Signature: Valid | ![Dose 2 of 2](readme-resources/vaccine_BBIBP-CorV.png) | ❌ |
+| To few doses | Valid: 2023-07-01<br/>Vaccine: Comirnaty (EU/1/20/1528)<br/>Dose: 1/2<br/>Signature:Valid | ![Dose 1 of 2](readme-resources/dose_1of2.png) | ❌ |
+| Fully vaccinated within quarantine period | Vaccine: Comirnaty (EU/1/20/1528)<br/>Dose: 2/2<br/>Vaccination Date: <14 days ago<br/>Signature:Valid | Create from https://dgc.a-sit.at/ehn/ | ❌ |
+| Fully vaccinated within quarantine period | Vaccine: Janssen (EU/1/20/1525)<br/>Dose: 1/1<br/>Vaccination Date: <14 days ago<br/>Signature:Valid | Create from https://dgc.a-sit.at/ehn/ | ❌ |
 
 ------
 
