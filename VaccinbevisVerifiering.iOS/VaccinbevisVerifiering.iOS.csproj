@@ -40,8 +40,8 @@
     <WarningLevel>4</WarningLevel>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
-    <CodesignKey>Apple Development: Henrik Bengtsson (J583H872S3)</CodesignKey>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>Apple Development: Henrik Bengtsson (273PSHG7B3)</CodesignKey>
+    <CodesignProvision>Vaccinationbevis verifiering utveckling</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,12 +65,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Distribution: Sondaica Technology AB (2Q9643BKQ5)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Myndigheten for digital forvaltning (R5MUUW7M24)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>
     </DeviceSpecificBuild>
-    <CodesignProvision>Vaccinationsbevis Verifiering</CodesignProvision>
+    <CodesignProvision>Vaccinationsbevis Verifiering DIGG</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

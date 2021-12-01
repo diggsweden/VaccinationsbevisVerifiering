@@ -26,7 +26,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Vaccinationsbevis Verifiering</string>
 	<key>CFBundleIdentifier</key>
-	<string>se.sondaica.vacbevisvalidator</string>
+	<string>se.digg.vacbevisvalidator</string>
 	<key>CFBundleVersion</key>
 	<string>1.2.2</string>
 	<key>UILaunchStoryboardName</key>
