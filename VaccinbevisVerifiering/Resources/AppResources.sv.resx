@@ -198,6 +198,16 @@
   <data name="UnvalidCode" xml:space="preserve">
     <value>Ogiltig QR kod</value>
   </data>
+  <data name="NotApprovedDaysSinceLastDose" xml:space="preserve">
+    <value>Karantäntid efter sista dos</value>
+  </data>
+  <data name="NotApprovedNoOfDoses" xml:space="preserve">
+    <value>Ej tillräckligt många doser</value>
+  </data>
+  <data name="NotApprovedVaccine" xml:space="preserve">
+    <value>Ej godkänt vaccin</value>
+  </data>
+
   <data name="FirstnameLabel" xml:space="preserve">
     <value>Förnamn: </value>
   </data>

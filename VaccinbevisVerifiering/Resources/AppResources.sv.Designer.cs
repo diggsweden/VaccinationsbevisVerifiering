@@ -209,6 +209,24 @@ namespace VaccinbevisVerifiering.Resources {
             }
         }
         
+        public static string NotApprovedDaysSinceLastDose {
+            get {
+                return ResourceManager.GetString("NotApprovedDaysSinceLastDose", resourceCulture);
+            }
+        }
+        
+        public static string NotApprovedNoOfDoses {
+            get {
+                return ResourceManager.GetString("NotApprovedNoOfDoses", resourceCulture);
+            }
+        }
+        
+        public static string NotApprovedVaccine {
+            get {
+                return ResourceManager.GetString("NotApprovedVaccine", resourceCulture);
+            }
+        }
+        
         public static string FirstnameLabel {
             get {
                 return ResourceManager.GetString("FirstnameLabel", resourceCulture);

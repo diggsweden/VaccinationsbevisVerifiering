@@ -200,43 +200,43 @@ namespace VaccinbevisVerifiering.ViewModels
                                 }
                             }
 
-                            List<string> texts = new List<string>();
+                            //List<string> texts = new List<string>();
                             if(_hasVaccination)
                             {
                                 if( fullyVaccinated)
                                 {
                                     ResultHeader = AppResources.ApprovedHeader;
-                                    texts.Add(AppResources.VaccinatedText);
+                                    ResultText = AppResources.VaccinatedText;
                                     IsResultOK = true;
                                 }
                                 else
                                 {
-                                    texts.Add(AppResources.NotFullyVaccinatedText);
+                                    //texts.Add(AppResources.NotFullyVaccinatedText);
                                     IsResultOK = false;
                                 }
                             }
                             if(_hasTest)
                             {
-                                texts.Add(AppResources.TestedText);
+                                ResultText = AppResources.TestedText;
                                 IsResultOK = false;
                             }
                             if (_hasRecovered)
                             {
-                                texts.Add(AppResources.RecoveredText);
+                                ResultText = AppResources.RecoveredText;
                                 IsResultOK = false;
                             }
                             if( !_hasVaccination && !_hasTest && !_hasRecovered)
                             {
-                                texts.Add(AppResources.MissingDataText);
+                                ResultText = AppResources.MissingDataText;
                                 IsResultOK = false;
                             }
                             if( proof.Message != null)
                             {
-                                texts.Add(" " + proof.Message);
+                                ResultText = ResultText+" " + proof.Message;
                                 IsResultOK = false;
                             }
 
-                            ResultText = string.Join(", ", texts.ToArray());
+                            //ResultText = string.Join(", ", texts.ToArray());
                         }
                         else
                         {
@@ -286,7 +286,22 @@ namespace VaccinbevisVerifiering.ViewModels
                     {
                         verified = true;
                     }
+                    else
+                    {
+                        // Not correct amount of days since last dose
+                        ResultText = AppResources.NotApprovedDaysSinceLastDose;
+                    }
                 }
+                else
+                {
+                    // To few doses
+                    ResultText = AppResources.NotApprovedNoOfDoses;
+                }
+            }
+            else
+            {
+                // Not approved vaccines
+                ResultText = AppResources.NotApprovedVaccine;
             }
 
             return verified;
