@@ -33,6 +33,9 @@ namespace VaccinbevisVerifiering
 
         protected override void OnResume()
         {
+            CertificateManager.LoadCertificates();
+            CertificateManager.LoadValueSets();
+            CertificateManager.LoadVaccineRules();
         }
     }
 }
