@@ -126,6 +126,7 @@ namespace VaccinbevisVerifiering.Services
                 if (trustList.Exp > GetSecondsFromEpoc())
                 {
                     TrustList = trustList;
+                    MessagingCenter.Send(Application.Current, "PublicKeysUpdated");
                 }
             }
             // If trustlist is not set or it´s older than 24 hours refresh it
