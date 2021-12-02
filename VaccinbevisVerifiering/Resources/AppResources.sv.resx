@@ -207,6 +207,15 @@
   <data name="NotApprovedVaccine" xml:space="preserve">
     <value>Ej godkänt vaccin</value>
   </data>
+  <data name="NoPublicKeys" xml:space="preserve">
+    <value>Inga publika nycklar</value>
+  </data>
+  <data name="OldPublicKeys" xml:space="preserve">
+    <value>Publika nycklar bör uppdateras</value>
+  </data>
+  <data name="UpdatePublicKeys" xml:space="preserve">
+    <value>Uppdatera publika nycklar</value>
+  </data>
 
   <data name="FirstnameLabel" xml:space="preserve">
     <value>Förnamn: </value>

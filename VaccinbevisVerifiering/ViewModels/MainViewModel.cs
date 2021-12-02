@@ -20,6 +20,7 @@ namespace VaccinbevisVerifiering.ViewModels
         private ICommand scanCommand;
         private ICommand settingsCommand;
         private ICommand aboutCommand;
+        private string _validKeysText;
 
         public MainViewModel()
         {
@@ -43,8 +44,42 @@ namespace VaccinbevisVerifiering.ViewModels
                 { }
                 await Scan();
             });
+
+            MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current, "PublicKeysUpdated", async (sender) =>
+            {
+                try
+                {
+
+                    ValidateKeys();
+                }
+                catch (Exception ex)
+                { }
+            });
+
+            ValidateKeys();
         }
 
+        private void ValidateKeys()
+        {
+            if (App.CertificateManager.TrustList == null)
+            {
+                ValidKeysText = AppResources.NoPublicKeys;
+            }
+            else if ((App.CertificateManager.TrustList.Iat + 86400) < App.CertificateManager.GetSecondsFromEpoc())
+            {
+                // Check if we downloaded keys
+                ValidKeysText = AppResources.OldPublicKeys;
+            }
+            else if ((App.CertificateManager.TrustList.Iat + 172800) < App.CertificateManager.GetSecondsFromEpoc())
+            {
+                // Check if we downloaded keys
+                ValidKeysText = AppResources.UpdatePublicKeys;
+            }
+            else
+            {
+                ValidKeysText = null;
+            }
+        }
         public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
         public ICommand SettingsCommand => settingsCommand ??
@@ -88,7 +123,21 @@ namespace VaccinbevisVerifiering.ViewModels
             }
         }
 
-       
+        public String ValidKeysText
+        {
+            get { return _validKeysText; }
+            set
+            {
+                _validKeysText = value;
+                OnPropertyChanged();
+                OnPropertyChanged("ValidKeysTextVisible");
+            }
+        }
+
+        public bool ValidKeysTextVisible
+        {
+            get { return (_validKeysText==null?false:true); }
+        }
 
     }
 

@@ -42,6 +42,7 @@ namespace VaccinbevisVerifiering.Services
             {
                 TrustList = trustList;
                 await File.WriteAllTextAsync(TrustListFileName, DSC_TLSerialize.ToJson(trustList));
+                MessagingCenter.Send(Application.Current, "PublicKeysUpdated");
             }
         }
 
@@ -146,7 +147,7 @@ namespace VaccinbevisVerifiering.Services
             }
         }
 
-        private long GetSecondsFromEpoc()
+        public long GetSecondsFromEpoc()
         {
             return DateTimeOffset.Now.ToUnixTimeSeconds();
         }

@@ -9,6 +9,11 @@
     <ContentPage.BindingContext>
         <viewModels:MainViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewModels:LabelColorConverter x:Key="LabelColorConverter"></viewModels:LabelColorConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <NavigationPage.TitleView>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -28,6 +33,7 @@
                 <Label Text="{x:Static resource:AppResources.InformationHeader}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="34" TextColor="#695f59" Padding="30,5,30,0" />
                 <Label Text="{x:Static resource:AppResources.InformationText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="#695f59" Padding="30,30,30,20" />
                 <Image Source="mobil.png" HeightRequest="150" HorizontalOptions="Center"/>
+                <Label x:Name="labelValidKeysText" IsVisible="{Binding ValidKeysTextVisible}" Text="{Binding ValidKeysText}" FontSize="Large" BackgroundColor="White" FontAttributes="Bold" TextColor="Color.Red" Padding="10,20,10,0" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 0.35" >
                 <Button Text="{x:Static resource:AppResources.ScanButtonText}" Margin="20" HorizontalOptions="CenterAndExpand" Command="{Binding ScanCommand}" 

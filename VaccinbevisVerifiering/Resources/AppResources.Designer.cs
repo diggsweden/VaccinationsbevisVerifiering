@@ -227,6 +227,24 @@ namespace VaccinbevisVerifiering.Resources {
             }
         }
         
+        public static string NoPublicKeys {
+            get {
+                return ResourceManager.GetString("NoPublicKeys", resourceCulture);
+            }
+        }
+        
+        public static string OldPublicKeys {
+            get {
+                return ResourceManager.GetString("OldPublicKeys", resourceCulture);
+            }
+        }
+        
+        public static string UpdatePublicKeys {
+            get {
+                return ResourceManager.GetString("UpdatePublicKeys", resourceCulture);
+            }
+        }
+        
         public static string FirstnameLabel {
             get {
                 return ResourceManager.GetString("FirstnameLabel", resourceCulture);

@@ -207,6 +207,16 @@
   <data name="NotApprovedVaccine" xml:space="preserve">
     <value>Not approved vaccine</value>
   </data>
+  <data name="NoPublicKeys" xml:space="preserve">
+    <value>No public keys</value>
+  </data>
+  <data name="OldPublicKeys" xml:space="preserve">
+    <value>Public keys are old</value>
+  </data>
+  <data name="UpdatePublicKeys" xml:space="preserve">
+    <value>Public keys needs to be updated</value>
+  </data>
+
 
   <data name="FirstnameLabel" xml:space="preserve">
     <value>First name: </value>
