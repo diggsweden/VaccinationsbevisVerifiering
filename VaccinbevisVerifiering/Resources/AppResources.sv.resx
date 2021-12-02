@@ -199,13 +199,13 @@
     <value>Ogiltig QR kod</value>
   </data>
   <data name="NotApprovedDaysSinceLastDose" xml:space="preserve">
-    <value>Karantäntid efter sista dos</value>
+    <value>Mindre än 14 dagar sedan sista dos</value>
   </data>
   <data name="NotApprovedNoOfDoses" xml:space="preserve">
-    <value>Ej tillräckligt många doser</value>
+    <value>Ej fullvaccinerad</value>
   </data>
   <data name="NotApprovedVaccine" xml:space="preserve">
-    <value>Ej godkänt vaccin</value>
+    <value>Ogiltigt vaccin</value>
   </data>
   <data name="NoPublicKeys" xml:space="preserve">
     <value>Inga publika nycklar</value>

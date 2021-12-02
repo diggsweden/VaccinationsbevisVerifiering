@@ -199,13 +199,13 @@
     <value>Unvalid QR code</value>
   </data>
   <data name="NotApprovedDaysSinceLastDose" xml:space="preserve">
-    <value>To few days since last dose</value>
+    <value>Less than 14 days since last dose</value>
   </data>
   <data name="NotApprovedNoOfDoses" xml:space="preserve">
-    <value>Not approved number of doses</value>
+    <value>Not fully vaccinated</value>
   </data>
   <data name="NotApprovedVaccine" xml:space="preserve">
-    <value>Not approved vaccine</value>
+    <value>Not valid vaccination</value>
   </data>
   <data name="NoPublicKeys" xml:space="preserve">
     <value>No public keys</value>
