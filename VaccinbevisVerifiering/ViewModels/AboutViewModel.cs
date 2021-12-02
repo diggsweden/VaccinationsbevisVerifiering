@@ -29,7 +29,7 @@ namespace VaccinbevisVerifiering.ViewModels
         
         public String PublicKeyVersion
         {
-            get { return AppResources.KeyVersion + " " + SecondsFromEpocToDateTime(App.CertificateManager.TrustList.Iat).ToString(); }
+            get { return AppResources.KeyVersion + " " + (App.CertificateManager.TrustList != null ? SecondsFromEpocToDateTime(App.CertificateManager.TrustList.Iat).ToString() : AppResources.MissingDataText); }
         }
 
         public String ValidationRulesVersion
