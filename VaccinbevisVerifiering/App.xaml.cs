@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 using VaccinbevisVerifiering.Views;
 using VaccinbevisVerifiering.Services.CWT.Certificates;
 using VaccinbevisVerifiering.Services;
+using Xamarin.Essentials;
 
 namespace VaccinbevisVerifiering
 {
@@ -20,8 +21,19 @@ namespace VaccinbevisVerifiering
             Xamarin.Essentials.Preferences.Set("ProductionMode", true);
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                var storageReadPermission = await Permissions.RequestAsync<Permissions.StorageRead>();
+                var storageWritePermission = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                if (storageReadPermission != PermissionStatus.Granted ||
+                    storageWritePermission != PermissionStatus.Granted)
+                {
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+                }
+            }
+
             CertificateManager.LoadCertificates();
             CertificateManager.LoadValueSets();
             CertificateManager.LoadVaccineRules();
