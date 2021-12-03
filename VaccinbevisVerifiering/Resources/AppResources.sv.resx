@@ -328,4 +328,7 @@
   <data name="NoVerificationText" xml:space="preserve">
     <value>Ingen verifiering</value>
   </data>
+    <data name="PrivacyPolicyLink" xml:space="preserve">
+    <value>Integritetspolicy</value>
+  </data>
 </root>

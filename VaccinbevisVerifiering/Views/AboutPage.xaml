@@ -29,6 +29,11 @@
                         <TapGestureRecognizer Tapped="VerifierFaq" />
                     </Label.GestureRecognizers>
                 </Label>
+                <Label Text="{x:Static resource:AppResources.PrivacyPolicyLink}" TextDecorations="Underline" FontAttributes="Bold" FontSize="18" Padding="30,20,30,10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PrivacyPolicyLink" />
+                    </Label.GestureRecognizers>
+                </Label>
                 <Label x:Name="labelAppVersion" Text="{Binding AppVersion}" FontSize="18" TextColor="#695f59" Padding="30,20,30,0"/>
                 <Label x:Name="labelPublicKeyVersion" Text="{Binding PublicKeyVersion}" FontSize="18" TextColor="#695f59" Padding="30,5,30,0"/>
                 <Label x:Name="labelValidationRuleVersion" Text="{Binding ValidationRulesVersion}" FontSize="18" TextColor="#695f59" Padding="30,5,30,10"/>

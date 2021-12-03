@@ -19,5 +19,9 @@ namespace VaccinbevisVerifiering.Views
         {
             Device.OpenUri(new Uri("https://www.digg.se/utveckling-av-digital-forvaltning/verifieringslosning-for-vaccinationsbevis"));
         }
+        protected void PrivacyPolicyLink(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://www.digg.se/vaccinationsbevis-verifiering/integritetspolicy"));
+        }
     }
 }
