@@ -457,7 +457,7 @@ namespace VaccinbevisVerifiering.ViewModels
         {
             if (value is bool)
             {
-                return ((bool)value ? Color.DarkGreen : Color.DarkRed );
+                return ((bool)value ? "#008204" : "#C32C0F");
             }
             return "#695F59";
         }
