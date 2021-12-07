@@ -216,7 +216,6 @@
   <data name="UpdatePublicKeys" xml:space="preserve">
     <value>Uppdatera publika nycklar</value>
   </data>
-
   <data name="FirstnameLabel" xml:space="preserve">
     <value>Förnamn: </value>
   </data>
@@ -328,7 +327,10 @@
   <data name="NoVerificationText" xml:space="preserve">
     <value>Ingen verifiering</value>
   </data>
-    <data name="PrivacyPolicyLink" xml:space="preserve">
+  <data name="PrivacyPolicyLink" xml:space="preserve">
     <value>Integritetspolicy</value>
+  </data>
+  <data name="KeyModalErrorMessage" xml:space="preserve">
+    <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>
   </data>
 </root>
