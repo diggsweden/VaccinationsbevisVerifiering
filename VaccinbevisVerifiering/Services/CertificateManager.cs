@@ -42,8 +42,8 @@ namespace VaccinbevisVerifiering.Services
             {
                 TrustList = trustList;
                 await File.WriteAllTextAsync(TrustListFileName, DSC_TLSerialize.ToJson(trustList));
-                MessagingCenter.Send(Application.Current, "PublicKeysUpdated");
             }
+            MessagingCenter.Send(Application.Current, "PublicKeysUpdated");
         }
 
         public async void RefreshVaccineRulesAsync()
