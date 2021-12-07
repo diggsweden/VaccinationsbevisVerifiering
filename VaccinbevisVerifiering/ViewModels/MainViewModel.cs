@@ -79,6 +79,12 @@ namespace VaccinbevisVerifiering.ViewModels
             {
                 ValidKeysText = null;
             }
+
+            if (ValidKeysText == AppResources.NoPublicKeys || ValidKeysText == AppResources.OldPublicKeys ||
+                ValidKeysText == AppResources.UpdatePublicKeys)
+            {
+                MessagingCenter.Send(Application.Current, "DisplayPublicKeysError");
+            }
         }
         public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
