@@ -70,7 +70,7 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verification App for Digital Covid Certificate developed by Swedish Agency for Digital Government (DIGG)..
+        ///   Looks up a localized string similar to Sweden&apos;s public verification app for vaccination certificates, developed by the Agency for Digital Government (DIGG).
         /// </summary>
         public static string AboutText {
             get {
