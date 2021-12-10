@@ -41,8 +41,8 @@
                        Margin="0"
                        BackgroundColor="White" VerticalOptions="FillAndExpand" >
                     <StackLayout>
-                        <Image Source="ok.png" IsVisible="{Binding IsResultOK}" HeightRequest="100" HorizontalOptions="Center"/>
-                        <Image Source="fail.png" IsVisible="{Binding IsResultNotOK}" HeightRequest="100" HorizontalOptions="Center"/>
+                        <Image AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.ResultViewValidImageText}" Source="ok.png" IsVisible="{Binding IsResultOK}" HeightRequest="100" HorizontalOptions="Center"/>
+                        <Image AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.ResultViewFailedImageText}" Source="fail.png" IsVisible="{Binding IsResultNotOK}" HeightRequest="100" HorizontalOptions="Center"/>
                         <Label x:Name="labelResultHeader" IsVisible="{Binding IsVisible}" Text="{Binding ResultHeader}" FontSize="Title" BackgroundColor="White" FontAttributes="Bold" TextColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}" Padding="30,0,30,0" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
                         <Label x:Name="labelResultText" IsVisible="{Binding IsVisible}" Text="{Binding ResultText}" FontSize="Large" BackgroundColor="White" FontAttributes="Bold" TextColor="{Binding IsResultOK, Converter={StaticResource LabelColorConverter}}" Padding="30,0,30,0" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment ="Center"/>
                         <FlexLayout Direction="Column" >
