@@ -39,15 +39,14 @@
                 <Button Text="{x:Static resource:AppResources.ScanButtonText}" Margin="20" HorizontalOptions="CenterAndExpand" Command="{Binding ScanCommand}" 
                     BackgroundColor="#5A6751" TextColor="White" Padding="30,20,30,20"
                     FontAttributes="Bold" FontSize="Large" CornerRadius="35" WidthRequest="300" />
-                <Label Text="{x:Static resource:AppResources.LinkText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" 
+                    <Label Text="{x:Static resource:AppResources.LinkText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" 
                     Padding="30,10,30,40" TextColor="#5A6751" FontSize="Medium" TextDecorations="Underline" LineBreakMode="WordWrap" MaxLines="3">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}"
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapCommand}"
                             CommandParameter="https://www.digg.se/vaccinationsbevis-verifiering/information" />
                         </Label.GestureRecognizers>
-                </Label>
-                <Image Source="flagga.png" HeightRequest="30" HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
+                    </Label>
+                </StackLayout>
         </AbsoluteLayout>
         </ScrollView>
     </ContentPage.Content>
