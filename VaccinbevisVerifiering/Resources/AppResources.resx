@@ -310,7 +310,7 @@
     <value>About this app</value>
   </data>
   <data name="AboutText" xml:space="preserve">
-    <value>Verification App for Digital Covid Certificate developed by Swedish Agency for Digital Government (DIGG).</value>
+    <value>Sweden's public verification app for vaccination certificates, developed by the Agency for Digital Government (DIGG)</value>
   </data>
   <data name="SettingsText" xml:space="preserve">
     <value>Settings</value>
@@ -329,5 +329,23 @@
   </data>
   <data name="PrivacyPolicyLink" xml:space="preserve">
     <value>Privacy policy</value>
+  </data>
+  <data name="AboutViewCancelButtonText" xml:space="preserve">
+    <value>Cancel button</value>
+  </data>
+  <data name="AboutViewLogotypeText" xml:space="preserve">
+    <value>DIGG logotype</value>
+  </data>
+  <data name="MainViewImageText" xml:space="preserve">
+    <value>Picture of a mobile device with a QR code</value>
+  </data>
+  <data name="MainViewInfoButtonText" xml:space="preserve">
+    <value>Info button</value>
+  </data>
+  <data name="ResultViewFailedImageText" xml:space="preserve">
+    <value>Not valid icon</value>
+  </data>
+  <data name="ResultViewValidImageText" xml:space="preserve">
+    <value>Valid icon</value>
   </data>
 </root>

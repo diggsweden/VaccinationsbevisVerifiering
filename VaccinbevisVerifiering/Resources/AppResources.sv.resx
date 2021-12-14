@@ -216,7 +216,6 @@
   <data name="UpdatePublicKeys" xml:space="preserve">
     <value>Uppdatera publika nycklar</value>
   </data>
-
   <data name="FirstnameLabel" xml:space="preserve">
     <value>Förnamn: </value>
   </data>
@@ -311,7 +310,7 @@
     <value>Vanliga frågor</value>
   </data>
   <data name="AboutText" xml:space="preserve">
-    <value>Verifieringsapp för Covidbevis utvecklad av Myndigheten för Digital förvaltning (DIGG).</value>
+    <value>Sveriges offentliga verifieringsapp för vaccinationsbevis utvecklad av Myndigheten för digital förvaltning (DIGG)</value>
   </data>
   <data name="SettingsText" xml:space="preserve">
     <value>Inställningar</value>
@@ -328,7 +327,25 @@
   <data name="NoVerificationText" xml:space="preserve">
     <value>Ingen verifiering</value>
   </data>
-    <data name="PrivacyPolicyLink" xml:space="preserve">
+  <data name="PrivacyPolicyLink" xml:space="preserve">
     <value>Integritetspolicy</value>
+  </data>
+  <data name="AboutViewCancelButtonText" xml:space="preserve">
+    <value>Avbryt knapp</value>
+  </data>
+  <data name="AboutViewLogotypeText" xml:space="preserve">
+    <value>DIGG logotyp</value>
+  </data>
+  <data name="MainViewImageText" xml:space="preserve">
+    <value>Bild av mobil med QR kod</value>
+  </data>
+  <data name="MainViewInfoButtonText" xml:space="preserve">
+    <value>Info knapp</value>
+  </data>
+  <data name="ResultViewFailedImageText" xml:space="preserve">
+    <value>Ej Godkänd ikon</value>
+  </data>
+  <data name="ResultViewValidImageText" xml:space="preserve">
+    <value>Godkänd ikon</value>
   </data>
 </root>
