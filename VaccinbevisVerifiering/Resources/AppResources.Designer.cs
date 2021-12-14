@@ -79,6 +79,24 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel button.
+        /// </summary>
+        public static string AboutViewCancelButtonText {
+            get {
+                return ResourceManager.GetString("AboutViewCancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DIGG logotype.
+        /// </summary>
+        public static string AboutViewLogotypeText {
+            get {
+                return ResourceManager.GetString("AboutViewLogotypeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valid.
         /// </summary>
         public static string ApprovedHeader {
@@ -268,6 +286,24 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Picture of a mobile device with a QR code.
+        /// </summary>
+        public static string MainViewImageText {
+            get {
+                return ResourceManager.GetString("MainViewImageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info button.
+        /// </summary>
+        public static string MainViewInfoButtonText {
+            get {
+                return ResourceManager.GetString("MainViewInfoButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No information.
         /// </summary>
         public static string MissingDataText {
@@ -408,6 +444,24 @@ namespace VaccinbevisVerifiering.Resources {
         public static string RefreshText {
             get {
                 return ResourceManager.GetString("RefreshText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not valid icon.
+        /// </summary>
+        public static string ResultViewFailedImageText {
+            get {
+                return ResourceManager.GetString("ResultViewFailedImageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid icon.
+        /// </summary>
+        public static string ResultViewValidImageText {
+            get {
+                return ResourceManager.GetString("ResultViewValidImageText", resourceCulture);
             }
         }
         
