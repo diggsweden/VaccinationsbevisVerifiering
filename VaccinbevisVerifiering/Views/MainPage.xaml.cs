@@ -10,14 +10,26 @@ namespace VaccinbevisVerifiering.Views
         public MainPage()
         {
             InitializeComponent();
-            MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current, "DisplayPublicKeysError",
-                (sender) =>
-                {
-                    DisplayAlert(labelValidKeysText.Text, AppResources.KeyModalErrorMessage, "OK");
-
-                });
-
+            if (!MainPageStore.HasKeyErrorSubscription)
+                MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current,
+                    "DisplayPublicKeysError", ShowKeyErrorAlert);
             // Title = AppResources.HeaderText;
+            MainPageStore.HasKeyErrorSubscription = true;
         }
+
+        private async void ShowKeyErrorAlert(Application sender)
+        {
+            if (MainPageStore.ModalVisible) return;
+
+            MainPageStore.ModalVisible = true;
+            await DisplayAlert(labelValidKeysText.Text, AppResources.KeyModalErrorMessage, "OK");
+            MainPageStore.ModalVisible = false;
+        }
+    }
+
+    public static class MainPageStore
+    {
+        public static bool HasKeyErrorSubscription { get; set; }
+        public static bool ModalVisible { get; set; }
     }
 }
