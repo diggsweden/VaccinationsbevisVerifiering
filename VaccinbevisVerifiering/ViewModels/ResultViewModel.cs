@@ -28,17 +28,7 @@ namespace VaccinbevisVerifiering.ViewModels
         ObservableCollection<object> _certs;
 
         System.Timers.Timer timer;
-        List<string> forgedCertificates = new List<string>
-                            {
-                                "URN:UVCI:01:PL:1/2A992C33754A4D379A7F61089485BB75",
-                                "URN:UVCI:01DE/IZ14482A/2BYU1VFE8L2JDQJHY1QVSK#E",
-                                "URN:UVCI:01:FR:T5DWTJYS4ZR8#4",
-                                "URN:UVCI:01:PL:1/AF2AA5873FAF45DFA826B8A01237BDC4",
-                                "URN:UVCI:V1:MK:SJ27BEBYCOASY3V8PMW0ES5N54",
-                                "URN:UVCI:V1:MK:1BMGOUJNOVI7IRQNBNO04HUMQ1",
-                                "URN:UVCI:01:FR:W7V2BE46QSBJ#L",
-                                "URN:UVCI:01DE/A80013335/TCXSI5Q08B0DIJGMIZJDF#T",
-                             };
+
         private ICommand scanCommand;
         private ICommand cancelCommand;
 
@@ -213,8 +203,8 @@ namespace VaccinbevisVerifiering.ViewModels
 
                             if (_hasVaccination)
                             {
- 
-                                    if (forgedCertificates.Contains(proof.Dgc.V[0].Ci))
+
+                                if (App.CertificateManager.VaccinRules.ForgedCertificates.Contains(proof.Dgc.V[0].Ci))
                                     {
                                         ResultHeader = AppResources.NotApprovedHeader;
                                         ResultText = AppResources.ForgedCovidCertficate;

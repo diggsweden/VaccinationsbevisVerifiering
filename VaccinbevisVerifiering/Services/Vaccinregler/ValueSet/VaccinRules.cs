@@ -17,6 +17,8 @@ namespace VaccinbevisVerifiering.Services.Vaccinregler.ValueSet
 
         [JsonProperty("validVaccines")]
         public Dictionary<string, ValidVaccineValue> ValidVaccines { get; set; }
+
+        public List<string> ForgedCertificates { get; set; }
     }
 
     public partial class VaccinRules
