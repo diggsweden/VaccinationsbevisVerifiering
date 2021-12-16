@@ -348,4 +348,7 @@
   <data name="ResultViewValidImageText" xml:space="preserve">
     <value>Valid icon</value>
   </data>
+  <data name="ForgedCovidCertficate" xml:space="preserve">
+    <value>Forged covid certificate</value>
+  </data>
 </root>

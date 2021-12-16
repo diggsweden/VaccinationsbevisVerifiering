@@ -348,4 +348,7 @@
   <data name="ResultViewValidImageText" xml:space="preserve">
     <value>Godkänd ikon</value>
   </data>
+  <data name="ForgedCovidCertficate" xml:space="preserve">
+    <value>Falskt covidbevis</value>
+  </data>
 </root>

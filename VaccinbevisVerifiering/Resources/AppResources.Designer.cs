@@ -214,6 +214,15 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forged covid certificate.
+        /// </summary>
+        public static string ForgedCovidCertficate {
+            get {
+                return ResourceManager.GetString("ForgedCovidCertficate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vaccination certificate.
         /// </summary>
         public static string HeaderText {
