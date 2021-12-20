@@ -351,4 +351,7 @@
   <data name="ForgedCovidCertficate" xml:space="preserve">
     <value>Falskt covidbevis</value>
   </data>
+  <data name="KeyModalErrorMessage" xml:space="preserve">
+    <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>
+  </data>
 </root>

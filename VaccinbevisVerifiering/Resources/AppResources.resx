@@ -350,5 +350,8 @@
   </data>
   <data name="ForgedCovidCertficate" xml:space="preserve">
     <value>Forged covid certificate</value>
+  </data>  
+  <data name="KeyModalErrorMessage" xml:space="preserve">
+    <value>Connect the app to internet and the keys will be downloaded automatically</value>
   </data>
 </root>
