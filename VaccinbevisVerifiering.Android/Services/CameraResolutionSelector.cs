@@ -17,8 +17,7 @@ namespace VaccinbevisVerifiering.Droid.Services
     {
         public static CameraResolution SelectLowestResolutionMatchingDisplayAspectRatio(List<CameraResolution> availableResolutions)
         {
-            const double aspectTolerance = 0.1;
-
+            const double aspectTolerance = 0.12;
             //calculating our targetRatio
             var targetRatio = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Height;
 
