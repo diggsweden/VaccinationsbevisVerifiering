@@ -348,4 +348,7 @@
   <data name="ResultViewValidImageText" xml:space="preserve">
     <value>Godkänd ikon</value>
   </data>
+  <data name="KeyModalErrorMessage" xml:space="preserve">
+    <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>
+  </data>
 </root>
