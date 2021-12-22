@@ -16,13 +16,12 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
-            <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewCancelButtonText}" Grid.Column="2" Source="abort.png" HeightRequest="60" WidthRequest="60" BackgroundColor="White" CornerRadius="45" Clicked="NavigateButton_OnClicked" HorizontalOptions="Start" Padding="10,10,10,10"/>
+            <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewCancelButtonText}" Grid.Column="2" Source="abort.png" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" CornerRadius="22" Clicked="NavigateButton_OnClicked" HorizontalOptions="Start" Padding="5,5,5,5"/>
         </Grid>
     </NavigationPage.TitleView>
     <ScrollView BackgroundColor="White">
         <Grid>
-            <!--<Path AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 0.65" Fill="#ffffff" Stroke="#ffffff" Aspect="Fill" Data="m259.19002,205.23077l265,0l0,216.88349c-93.81707,47.19512 -182.76829,47.90488 -265.02439,3.87911l0.02439,-220.76259z"/>-->
-            <StackLayout Grid.RowSpan="2">
+            <StackLayout Grid.Row="0">
                 <Label Style="{StaticResource SubTitle}" Text="{x:Static resource:AppResources.AboutHeaderText}" FontAttributes="Bold" Margin="30,20,30,0"/>
                 <Label Style="{StaticResource Text}" Text="{x:Static resource:AppResources.AboutText}" Margin="30,20,30,10"/>
                 <Label Style="{StaticResource Link}" Text="{x:Static resource:AppResources.FAQ}" FontAttributes="Bold" Margin="30,20,30,10">
@@ -39,11 +38,12 @@
                 <Label Style="{StaticResource Text}" x:Name="labelPublicKeyVersion" Text="{Binding PublicKeyVersion}" Margin="30,5,30,0" />
                 <Label Style="{StaticResource Text}" x:Name="labelValidationRuleVersion" Text="{Binding ValidationRulesVersion}" Margin="30,5,30,10" />
                 <Label />
-
-            </StackLayout>
-            <StackLayout Grid.Row="2">
-                <Image Source="digg_centered_2.png" AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewLogotypeText}" WidthRequest="200" HorizontalOptions="CenterAndExpand" Margin="30"/>
-            </StackLayout>
+                </StackLayout>
+                <Path Grid.Row="1" Fill="#195A6751" Stroke="#195A6751" StrokeThickness="0" Aspect="Fill" Data="m485.9263,382.49569c6.48247,6.3858 27.64979,5.93851 34.68626,0l0,31.60021l-34.68626,0l0,-31.60021z"></Path>
+                <StackLayout Grid.Row="1">
+                <Image Source="digg_centered_2.png" AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewLogotypeText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="70"/>
+                </StackLayout>
+                
             </Grid>
     </ScrollView>
 
