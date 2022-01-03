@@ -26,6 +26,7 @@ namespace VaccinbevisVerifiering.ViewModels
         bool _hasTest = false;
         bool _hasRecovered = false;
         ObservableCollection<object> _certs;
+
         System.Timers.Timer timer;
 
         private ICommand scanCommand;
@@ -200,20 +201,30 @@ namespace VaccinbevisVerifiering.ViewModels
                                 }
                             }
 
-                            //List<string> texts = new List<string>();
-                            if(_hasVaccination)
+                            if (_hasVaccination)
                             {
-                                if( fullyVaccinated)
-                                {
-                                    ResultHeader = AppResources.ApprovedHeader;
-                                    ResultText = AppResources.VaccinatedText;
-                                    IsResultOK = true;
-                                }
-                                else
-                                {
-                                    //texts.Add(AppResources.NotFullyVaccinatedText);
-                                    IsResultOK = false;
-                                }
+
+                                if (App.CertificateManager.VaccinRules.RevokedCertificates.Contains(proof.Dgc.V[0].Ci))
+                                    {
+                                        ResultHeader = AppResources.NotApprovedHeader;
+                                        ResultText = AppResources.RevokedCertificateText;
+                                        IsResultOK = false;
+                                    }
+
+
+                                    else if (fullyVaccinated)
+                                    {
+                                        ResultHeader = AppResources.ApprovedHeader;
+                                        ResultText = AppResources.VaccinatedText;
+                                        IsResultOK = true;
+                                    }
+
+                                    else
+                                    {
+                                        //texts.Add(AppResources.NotFullyVaccinatedText);
+                                        IsResultOK = false;
+                                    }
+                                
                             }
                             if(_hasTest)
                             {
@@ -272,8 +283,9 @@ namespace VaccinbevisVerifiering.ViewModels
             bool verified = false;
 
             _ = App.CertificateManager.VaccinRules.ValidVaccines.TryGetValue(vac.Mp, out ValidVaccineValue rule);
+ 
 
-            if( rule != null)
+            if ( rule != null)
             {
                 // Vaccine are valid, check min dose and days since min dose
                 if (vac.Dn > rule.MinDose)

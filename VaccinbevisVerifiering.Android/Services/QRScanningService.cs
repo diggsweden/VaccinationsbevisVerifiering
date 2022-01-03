@@ -30,8 +30,8 @@ namespace VaccinbevisVerifiering.Droid.Services
                     ZXing.BarcodeFormat.QR_CODE
                 },
                 UseNativeScanning = true,
-                TryHarder = false,
-                AutoRotate = false
+                TryHarder = true,
+                AutoRotate = true
             };
 
             var scanner = new MobileBarcodeScanner()
