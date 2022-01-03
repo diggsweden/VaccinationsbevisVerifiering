@@ -184,7 +184,7 @@
     <value>Keys retrived: </value>
   </data>
   <data name="ValidationRulesVersion" xml:space="preserve">
-    <value>Validarion rule version: </value>
+    <value>Validation rule version: </value>
   </data>
   <data name="InvalidSigningCertificate" xml:space="preserve">
     <value>Invalid signing certificate</value>
