@@ -55,7 +55,7 @@
                     <StackLayout VerticalOptions="EndAndExpand">
                         <Button Text="{x:Static resource:AppResources.ScanAgainButtonText}" Margin="5" HeightRequest="60" HorizontalOptions="FillAndExpand" Command="{Binding ScanCommand}" BackgroundColor="Black" TextColor="White" FontAttributes="Bold" FontSize="Large" CornerRadius="30" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="60">
-                            <ImageButton Source="abort.png" HeightRequest="30" VerticalOptions="Center" Padding="5,5,5,5" Command="{Binding CancelCommand}"/>
+                            <ImageButton Source="abort.png" HeightRequest="30" VerticalOptions="Center" Padding="5,5,5,5" Command="{Binding CancelCommand}" BackgroundColor="Transparent"/>
                             <Label Text="Avbryt" Style="{StaticResource Text}" VerticalOptions="Center">
                             <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding CancelCommand}"></TapGestureRecognizer>

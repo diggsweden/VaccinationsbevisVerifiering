@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
-            <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewCancelButtonText}" Grid.Column="2" Source="abort.png" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" CornerRadius="22" Clicked="NavigateButton_OnClicked" HorizontalOptions="Start" Padding="5,5,5,5"/>
+            <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewCancelButtonText}" Grid.Column="2" Source="abort.png" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" CornerRadius="22" Clicked="NavigateButton_OnClicked" HorizontalOptions="Start" Padding="10,10,10,10"/>
         </Grid>
     </NavigationPage.TitleView>
     <ScrollView BackgroundColor="White">
@@ -39,7 +39,7 @@
                 <Label Style="{StaticResource Text}" x:Name="labelValidationRuleVersion" Text="{Binding ValidationRulesVersion}" Margin="30,5,30,10" />
                 <Label />
                 </StackLayout>
-                <Path Grid.Row="1" Fill="#195A6751" Stroke="#195A6751" StrokeThickness="0" Aspect="Fill" Data="m485.9263,382.49569c6.48247,6.3858 27.64979,5.93851 34.68626,0l0,31.60021l-34.68626,0l0,-31.60021z"></Path>
+            <Path Grid.Row="1" Fill="#195A6751" Stroke="#195A6751" StrokeThickness="0" Aspect="Fill" Data="m485.9263,382.49569c6.48247,6.3858 27.64979,5.93851 34.68626,0l0,31.60021l-34.68626,0l0,-31.60021z" Margin="0,20,0,20"></Path>
                 <StackLayout Grid.Row="1">
                 <Image Source="digg_centered_2.png" AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewLogotypeText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="70"/>
                 </StackLayout>
