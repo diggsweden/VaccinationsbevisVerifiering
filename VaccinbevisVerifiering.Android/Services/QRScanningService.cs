@@ -31,8 +31,7 @@ namespace VaccinbevisVerifiering.Droid.Services
                 },
                 UseNativeScanning = true,
                 TryHarder = false,
-                AutoRotate = false,
-                CameraResolutionSelector = CameraResolutionSelector.SelectLowestResolutionMatchingDisplayAspectRatio
+                AutoRotate = false
             };
 
             var scanner = new MobileBarcodeScanner()

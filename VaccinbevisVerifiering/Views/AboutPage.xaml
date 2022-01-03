@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:resource="clr-namespace:VaccinbevisVerifiering.Resources"
     xmlns:viewModels="clr-namespace:VaccinbevisVerifiering.ViewModels"
-    x:Class="VaccinbevisVerifiering.Views.AboutPage">
+    x:Class="VaccinbevisVerifiering.Views.AboutPage"
+    NavigationPage.HasBackButton="False">
     <ContentPage.BindingContext>
         <viewModels:AboutViewModel/>
     </ContentPage.BindingContext>
@@ -15,35 +16,35 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
-            <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewCancelButtonText}" Grid.Column="2" Source="abort.png" HeightRequest="40" WidthRequest="40" BackgroundColor="White" CornerRadius="45" Clicked="NavigateButton_OnClicked" HorizontalOptions="Start"/>
+            <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewCancelButtonText}" Grid.Column="2" Source="abort.png" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" CornerRadius="22" Clicked="NavigateButton_OnClicked" HorizontalOptions="Start" Padding="10,10,10,10"/>
         </Grid>
     </NavigationPage.TitleView>
-    <ScrollView BackgroundColor="#195A6751">
-        <AbsoluteLayout x:Name="ViewLayout" BackgroundColor="#195A6751">
-            <Path AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 0.65" Fill="#ffffff" Stroke="#ffffff" Aspect="Fill" Data="m259.19002,205.23077l265,0l0,216.88349c-93.81707,47.19512 -182.76829,47.90488 -265.02439,3.87911l0.02439,-220.76259z"/>
-            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1,0.50">
-                <Label Style="{StaticResource SubTitle}" Text="{x:Static resource:AppResources.AboutHeaderText}" FontAttributes="Bold" Padding="30,20,30,10"/>
-                <Label Style="{StaticResource Text}" Text="{x:Static resource:AppResources.AboutText}" Padding="30,20,30,10"/>
-                <Label Style="{StaticResource Link}" Text="{x:Static resource:AppResources.FAQ}" FontAttributes="Bold" Padding="30,20,30,10">
+    <ScrollView BackgroundColor="White">
+        <Grid>
+            <StackLayout Grid.Row="0">
+                <Label Style="{StaticResource SubTitle}" Text="{x:Static resource:AppResources.AboutHeaderText}" FontAttributes="Bold" Margin="30,20,30,0"/>
+                <Label Style="{StaticResource Text}" Text="{x:Static resource:AppResources.AboutText}" Margin="30,20,30,10"/>
+                <Label Style="{StaticResource Link}" Text="{x:Static resource:AppResources.FAQ}" FontAttributes="Bold" Margin="30,20,30,10">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="VerifierFaq" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Style="{StaticResource Link}" Text="{x:Static resource:AppResources.PrivacyPolicyLink}" FontAttributes="Bold" Padding="30,20,30,10">
+                <Label Style="{StaticResource Link}" Text="{x:Static resource:AppResources.PrivacyPolicyLink}" FontAttributes="Bold" Margin="30,20,30,10">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="PrivacyPolicyLink" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Style="{StaticResource Text}" x:Name="labelAppVersion" Text="{Binding AppVersion}" Padding="30,20,30,0"/>
-                <Label Style="{StaticResource Text}" x:Name="labelPublicKeyVersion" Text="{Binding PublicKeyVersion}" Padding="30,5,30,0" LineBreakMode="WordWrap" MaxLines="2"/>
-                <Label Style="{StaticResource Text}" x:Name="labelValidationRuleVersion" Text="{Binding ValidationRulesVersion}" Padding="30,5,30,10" LineBreakMode="WordWrap" MaxLines="2"/>
+                <Label Style="{StaticResource Text}" x:Name="labelAppVersion" Text="{Binding AppVersion}" Margin="30,20,30,0"/>
+                <Label Style="{StaticResource Text}" x:Name="labelPublicKeyVersion" Text="{Binding PublicKeyVersion}" Margin="30,5,30,0" />
+                <Label Style="{StaticResource Text}" x:Name="labelValidationRuleVersion" Text="{Binding ValidationRulesVersion}" Margin="30,5,30,10" />
                 <Label />
-
-            </StackLayout>
-            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 0.35" Padding="0,0,0,0" >
-                <Image Source="digg_centered_2.png" AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewLogotypeText}" WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="30" AbsoluteLayout.LayoutBounds="20, 40, 50, 0.50"/>
-            </StackLayout>
-        </AbsoluteLayout>
+                </StackLayout>
+            <Path Grid.Row="1" Fill="#195A6751" Stroke="#195A6751" StrokeThickness="0" Aspect="Fill" Data="m485.9263,382.49569c6.48247,6.3858 27.64979,5.93851 34.68626,0l0,31.60021l-34.68626,0l0,-31.60021z" Margin="0,20,0,20"></Path>
+                <StackLayout Grid.Row="1">
+                <Image Source="digg_centered_2.png" AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.AboutViewLogotypeText}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="70"/>
+                </StackLayout>
+                
+            </Grid>
     </ScrollView>
 
 </ContentPage>
