@@ -241,6 +241,9 @@
     <BundleResource Include="..\VaccinbevisVerifiering\Resources\digg_centered_2.png">
       <Link>Resources\digg_centered_2.png</Link>
     </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\abort.png">
+      <Link>Resources\abort.png</Link>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork%402x" />
