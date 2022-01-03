@@ -348,8 +348,8 @@
   <data name="ResultViewValidImageText" xml:space="preserve">
     <value>Godkänd ikon</value>
   </data>
-  <data name="ForgedCovidCertficate" xml:space="preserve">
-    <value>Falskt covidbevis</value>
+  <data name="RevokedCertificateText" xml:space="preserve">
+    <value>Revokerat bevis</value>
   </data>
   <data name="KeyModalErrorMessage" xml:space="preserve">
     <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>

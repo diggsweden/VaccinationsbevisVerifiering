@@ -204,10 +204,10 @@ namespace VaccinbevisVerifiering.ViewModels
                             if (_hasVaccination)
                             {
 
-                                if (App.CertificateManager.VaccinRules.ForgedCertificates.Contains(proof.Dgc.V[0].Ci))
+                                if (App.CertificateManager.VaccinRules.RevokedCertificates.Contains(proof.Dgc.V[0].Ci))
                                     {
                                         ResultHeader = AppResources.NotApprovedHeader;
-                                        ResultText = AppResources.ForgedCovidCertficate;
+                                        ResultText = AppResources.RevokedCertificateText;
                                         IsResultOK = false;
                                     }
 
