@@ -67,24 +67,26 @@ namespace VaccinbevisVerifiering.Droid.Services
         {
             //Determine if device has flash/torch
             hasTorch = this.Context.PackageManager.HasSystemFeature(PackageManager.FeatureCameraFlash);
-            int iconHeight = 248;
-            int iconWidth = 248;
+            var metrics = Resources.DisplayMetrics;
+
             if (hasTorch)
             {
                 //Load torch button icons
-                var metrics = Resources.DisplayMetrics;
-                torchIconDimRect = new Rect(0, 0, iconWidth, iconHeight);
-                litTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash_off, iconWidth, iconHeight);
-                unlitTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash, iconWidth, iconHeight);
+                
+                int torchIconHeight = metrics.HeightPixels * 2 / 9;
+                int torchIconWidth = torchIconHeight;
+                torchIconDimRect = new Rect(0, 0, torchIconHeight, torchIconHeight);
+                litTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash, torchIconWidth, torchIconHeight);
+                unlitTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash_off, torchIconWidth, torchIconHeight);
 
             }
             //Load cancel button icons
-            cancelIconDimRect = new Rect(0, 0, iconWidth, iconHeight);
-            cancelIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.avbryt, iconWidth, iconHeight);
+            int cancelIconHeight = metrics.HeightPixels * 2 / 11;
+            int cancelIconWidth = cancelIconHeight;
+            cancelIconDimRect = new Rect(0, 0, cancelIconWidth, cancelIconHeight);
+            cancelIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.avbryt, cancelIconWidth, cancelIconHeight);
             // Initialize these once for performance rather than calling them every time in onDraw()
             defaultPaint = new Paint(PaintFlags.AntiAlias);
-            pressedPaint = new Paint(PaintFlags.AntiAlias);
-            pressedPaint.Color = new Color(96, 97, 104);
 
             SetBackgroundColor(Color.Transparent);
         }
@@ -92,9 +94,7 @@ namespace VaccinbevisVerifiering.Droid.Services
         Rect GetFramingRect(Canvas canvas)
         {
             var width = canvas.Width * 15 / 16;
-
             var height = canvas.Height * 4 / 10;
-
             var leftOffset = (canvas.Width - width) / 2;
             var topOffset = (canvas.Height - height) / 2;
             var framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
@@ -107,10 +107,40 @@ namespace VaccinbevisVerifiering.Droid.Services
         Rect GetCancelIconRect()
         {
             var metrics = Resources.DisplayMetrics;
-            int height = metrics.HeightPixels / 10;
-            int width = height;
-            int leftOffset = metrics.WidthPixels / 2 - width / 2;
-            int topOffset = metrics.HeightPixels * 7 / 8;
+            int height;
+            int width;
+            if (metrics.HeightPixels >= metrics.WidthPixels ){
+                height = metrics.HeightPixels / 20;
+                width = height;
+            }
+            else {
+                height = metrics.HeightPixels * 2 / 20;
+                width = height;
+            }
+            int leftOffset = metrics.WidthPixels - (width + 50);
+            int topOffset = 50;
+            var cancelRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
+
+            return cancelRect;
+        }
+        Rect GetCancelButtonRect()
+        {
+            var metrics = Resources.DisplayMetrics;
+            int height;
+            int width;
+            if (metrics.HeightPixels >= metrics.WidthPixels)
+            {
+                height = metrics.HeightPixels / 10;
+                width = height;
+            }
+            else
+            {
+                height = metrics.HeightPixels * 2 / 10;
+                width = height;
+            }
+
+            int leftOffset = metrics.WidthPixels - (width);
+            int topOffset = 0;
             var cancelRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
             return cancelRect;
@@ -130,10 +160,43 @@ namespace VaccinbevisVerifiering.Droid.Services
         Rect GetTorchIconRect()
         {
             var metrics = Resources.DisplayMetrics;
-            int height = metrics.HeightPixels / 10;
-            int width = height;
+            int height;
+            int width;
+            int topOffset;
+            if (metrics.HeightPixels >= metrics.WidthPixels){
+                height = metrics.HeightPixels / 9;
+                width = height;
+                topOffset = metrics.HeightPixels / 5 * 4;
+            }
+            else{
+                height = metrics.HeightPixels * 2 / 9;
+                width = height;
+                topOffset = metrics.HeightPixels - (height + 50);
+            }
             int leftOffset = metrics.WidthPixels / 2 - width / 2;
-            int topOffset = metrics.HeightPixels / 4 * 3;
+            var torchRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
+
+            return torchRect;
+        }
+        Rect GetTorchButtonRect()
+        {
+            var metrics = Resources.DisplayMetrics;
+            int height;
+            int width;
+            int topOffset;
+            if (metrics.HeightPixels >= metrics.WidthPixels)
+            {
+                height = metrics.HeightPixels / 9;
+                width = height;
+                topOffset = metrics.HeightPixels / 5 * 4;
+            }
+            else
+            {
+                height = metrics.HeightPixels * 2 / 9;
+                width = height;
+                topOffset = metrics.HeightPixels - (height + 50);
+            }
+            int leftOffset = metrics.WidthPixels / 2 - width / 2;
             var torchRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
             return torchRect;
@@ -147,14 +210,14 @@ namespace VaccinbevisVerifiering.Droid.Services
 			var frame = GetFramingRect(canvas);
 			if (frame == null)
 				return;
-            
+
+            var cancelBtn = GetCancelButtonRect();
+            var torchBtn = GetTorchButtonRect();
             var width = canvas.Width;
 			var height = canvas.Height;
 
             //Draw buttons
             defaultPaint.Color = Color.Black;
-            defaultPaint.Alpha = 255;
-            pressedPaint.Color = new Color(96, 97, 104);
 
             paint.Color = resultBitmap != null ? resultColor : maskColor;
             paint.Alpha = 100;
@@ -205,14 +268,19 @@ namespace VaccinbevisVerifiering.Droid.Services
                                       frame.Bottom + POINT_SIZE);
             }
             if( cancelIcon != null && cancelPressed != true)
-            { 
-            
+            {
+                defaultPaint.Alpha = 0;
+                canvas.DrawRect(cancelBtn,defaultPaint);
+                defaultPaint.Alpha = 255;
                 canvas.DrawBitmap(cancelIcon, GetCancelIconDimRect(), GetCancelIconRect(), defaultPaint);
             
 
                 if (hasTorch && litTorchIcon != null && unlitTorchIcon != null)
                 {
-                    canvas.DrawBitmap(torchOn ? litTorchIcon : unlitTorchIcon, GetTorchIconDimRect(), GetTorchIconRect(), defaultPaint);
+                    defaultPaint.Alpha = 0;
+                    canvas.DrawRect(torchBtn, defaultPaint);
+                    defaultPaint.Alpha = 255;
+                    canvas.DrawBitmap(torchOn ? litTorchIcon : unlitTorchIcon, GetTorchIconDimRect(), GetTorchIconRect(),defaultPaint);
                 }
 
             }
@@ -245,7 +313,7 @@ namespace VaccinbevisVerifiering.Droid.Services
         {
             if (me.Action == MotionEventActions.Down)
             {
-                if (GetCancelIconRect().Contains((int)me.RawX, (int)me.RawY))
+                if (GetCancelButtonRect().Contains((int)me.RawX, (int)me.RawY))
                 {
                     cancelPressed = true;
                     this.Invalidate();
@@ -253,7 +321,7 @@ namespace VaccinbevisVerifiering.Droid.Services
                     scanner.Cancel();
                     
                 }
-                if (GetTorchIconRect().Contains((int)me.RawX, (int)me.RawY))
+                if (GetTorchButtonRect().Contains((int)me.RawX, (int)me.RawY))
                 {
                     scanner.ToggleTorch();
                     torchOn = !torchOn;

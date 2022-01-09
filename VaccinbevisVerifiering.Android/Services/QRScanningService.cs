@@ -23,14 +23,15 @@ namespace VaccinbevisVerifiering.Droid.Services
     {
         public async Task<String> ScanAsync()
         {
+            //var cameraResolutionSelector = new CameraResolutionSelector();
             var optionsCustom = new MobileBarcodeScanningOptions
             {
                 PossibleFormats = new List<ZXing.BarcodeFormat>() {
                     ZXing.BarcodeFormat.QR_CODE
                 },
                 UseNativeScanning = true,
-                TryHarder = false,
-                AutoRotate = false
+                TryHarder = true,
+                AutoRotate = true
             };
 
             var scanner = new MobileBarcodeScanner()
