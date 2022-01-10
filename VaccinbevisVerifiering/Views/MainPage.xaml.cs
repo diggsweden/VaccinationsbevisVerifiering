@@ -10,6 +10,7 @@ namespace VaccinbevisVerifiering.Views
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             if (!MainPageStore.HasKeyErrorSubscription)
                 MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current,
                     "DisplayPublicKeysError", ShowKeyErrorAlert);

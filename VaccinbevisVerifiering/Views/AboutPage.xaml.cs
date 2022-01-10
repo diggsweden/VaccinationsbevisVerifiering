@@ -10,6 +10,7 @@ namespace VaccinbevisVerifiering.Views
         public AboutPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
         private async void NavigateButton_OnClicked(object sender, EventArgs e)
         {
