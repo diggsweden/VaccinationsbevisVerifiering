@@ -20,6 +20,9 @@ namespace VaccinbevisVerifiering.Services.Vaccinregler.ValueSet
 
         [JsonProperty("revokedCertificates")]
         public List<string> RevokedCertificates { get; set; }
+
+        [JsonProperty("appVersion")]
+        public AppVersion AppVersion { get; set; }
     }
 
     public partial class VaccinRules
@@ -54,6 +57,12 @@ namespace VaccinbevisVerifiering.Services.Vaccinregler.ValueSet
 
         [JsonProperty("dayssincemindose")]
         public int DaysSinceMinDose { get; set; }
+    }
+
+    public class AppVersion
+    {
+        public string iOS { get; set; }
+        public string Android { get; set; }
     }
 
     public partial class ValidVaccineValue

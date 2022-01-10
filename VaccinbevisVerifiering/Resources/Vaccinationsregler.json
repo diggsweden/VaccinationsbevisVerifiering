@@ -23,6 +23,10 @@
             "dayssincemindose": 14
         }
     },
+    "appVersion": {
+        "ios": "1.0.0",
+        "android": "2.0.0"
+    },
     "revokedCertificates": [
         "URN:UVCI:01:PL:1/2A992C33754A4D379A7F61089485BB75",
         "URN:UVCI:01DE/IZ14482A/2BYU1VFE8L2JDQJHY1QVSK#E",

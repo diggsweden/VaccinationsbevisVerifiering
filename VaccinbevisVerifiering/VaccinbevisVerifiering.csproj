@@ -25,8 +25,6 @@
     <Folder Include="Services\" />
     <Folder Include="Services\CWT\" />
     <Folder Include="Resources\Flags\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
     <Folder Include="Models\" />
     <Folder Include="Services\DGC\" />
     <Folder Include="Services\CWT\Cose\" />
@@ -49,6 +47,9 @@
     <EmbeddedResource Update="Resources\AppResources.sv.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.sv.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UpdatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
