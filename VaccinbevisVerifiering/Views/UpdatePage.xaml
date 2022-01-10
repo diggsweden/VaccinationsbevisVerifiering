@@ -28,7 +28,7 @@
                 <Label Style="{StaticResource Text}" Text="{x:Static resource:AppResources.UpdateViewLatestVersionText}" />
                 <Label Style="{StaticResource Text}" x:Name="labelLatestVersion" Text="{Binding LatestVersion}" />
             </StackLayout>
-            <Button Text="{x:Static resource:AppResources.UpdateViewButtonText}" FontSize="Medium" HorizontalOptions="FillAndExpand" Clicked="Button_Clicked" TextColor="White" BackgroundColor="black" CornerRadius="30" Margin="0,30,0,30"/>
+            <Button Text="{x:Static resource:AppResources.UpdateViewButtonText}" FontSize="Medium" HorizontalOptions="FillAndExpand" Clicked="Button_Clicked" TextColor="White" BackgroundColor="black" CornerRadius="25" Margin="0,30,0,30"/>
         </StackLayout>
 
     </ScrollView>
