@@ -354,4 +354,16 @@
   <data name="KeyModalErrorMessage" xml:space="preserve">
     <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>
   </data>
+  <data name="UpdateViewButtonText" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="UpdateViewCurrentVersionText" xml:space="preserve">
+    <value>Installerad version: </value>
+  </data>
+  <data name="UpdateViewLatestVersionText" xml:space="preserve">
+    <value>Senaste version:</value>
+  </data>
+  <data name="UpdateViewTitle" xml:space="preserve">
+    <value>Uppdatera din app</value>
+  </data>
 </root>

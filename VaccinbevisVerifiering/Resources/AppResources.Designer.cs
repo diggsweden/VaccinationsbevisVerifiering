@@ -664,6 +664,42 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string UpdateViewButtonText {
+            get {
+                return ResourceManager.GetString("UpdateViewButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed version:.
+        /// </summary>
+        public static string UpdateViewCurrentVersionText {
+            get {
+                return ResourceManager.GetString("UpdateViewCurrentVersionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest version:.
+        /// </summary>
+        public static string UpdateViewLatestVersionText {
+            get {
+                return ResourceManager.GetString("UpdateViewLatestVersionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update your app.
+        /// </summary>
+        public static string UpdateViewTitle {
+            get {
+                return ResourceManager.GetString("UpdateViewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fully vaccinated.
         /// </summary>
         public static string VaccinatedText {

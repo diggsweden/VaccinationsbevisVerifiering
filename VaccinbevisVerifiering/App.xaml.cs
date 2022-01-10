@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using VaccinbevisVerifiering.Views;
@@ -11,32 +12,58 @@ namespace VaccinbevisVerifiering
     public partial class App : Application
     {
         public static CertificateManager CertificateManager { get; private set; }
-
+        public static string _latestVersion { get; set; }
         public App()
         {
             InitializeComponent();
             CertificateManager = new CertificateManager(new RestService());
-            MainPage = new NavigationPage(new MainPage ()){ BarBackgroundColor = Color.White };
+            MainPage = new NavigationPage(new MainPage()) { BarBackgroundColor = Color.White };
             Xamarin.Essentials.Preferences.Set("NoVerificationMode", false);
             Xamarin.Essentials.Preferences.Set("ProductionMode", true);
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             CertificateManager.LoadCertificates();
             CertificateManager.LoadValueSets();
-            CertificateManager.LoadVaccineRules();
+            await CertificateManager.LoadVaccineRules();
+
+            await EnsureUpdatedVersion();
         }
 
         protected override void OnSleep()
         {
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
             CertificateManager.LoadCertificates();
             CertificateManager.LoadValueSets();
-            CertificateManager.LoadVaccineRules();
+            await CertificateManager.LoadVaccineRules();
+
+            await EnsureUpdatedVersion();
+        }
+
+
+        private async Task EnsureUpdatedVersion()
+        {
+            var deviceVersion = AppInfo.Version;
+            _latestVersion = Device.RuntimePlatform switch
+            {
+                Device.Android => CertificateManager.VaccinRules.AppVersion.Android,
+                Device.iOS => CertificateManager.VaccinRules.AppVersion.iOS,
+                _ => null
+            };
+
+            if (_latestVersion == null) return;
+
+            var latestVersionArray = _latestVersion.Split('.');
+            var latestMajorVersion = int.Parse(latestVersionArray[0]);
+            var latestMinorVersion = int.Parse(latestVersionArray[1]);
+
+            if (latestMajorVersion > deviceVersion.Major || latestMinorVersion > deviceVersion.Minor)
+                await Current.MainPage.Navigation.PushAsync(new UpdatePage());
+                
         }
     }
 }
