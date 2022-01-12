@@ -28,7 +28,7 @@
         <ScrollView BackgroundColor="White">
             <Grid>
                 <StackLayout Grid.Row="0" >
-                                <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.MainViewInfoButtonText}" Source="info2.png" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" CornerRadius="22" HorizontalOptions="End" Command="{Binding AboutCommand}" Padding="15,15,15,15" />
+                    <ImageButton AutomationProperties.IsInAccessibleTree="True" AutomationProperties.Name="{x:Static resource:AppResources.MainViewInfoButtonText}" Source="info2.png" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent" CornerRadius="22" HorizontalOptions="End" Command="{Binding AboutCommand}" Padding="15,15,15,15" />
                     <Label Style="{StaticResource SubTitle}" Text="{x:Static resource:AppResources.HeaderText}" HorizontalOptions="Center" Margin="30,0,30,0"/>
                     <Label Style="{StaticResource Title}" Text="{x:Static resource:AppResources.InformationHeader}" FontAttributes="Bold" HorizontalOptions="Center"/>
                     <Label Style="{StaticResource Text}" Text="{x:Static resource:AppResources.InformationText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="30,10,30,0"/>

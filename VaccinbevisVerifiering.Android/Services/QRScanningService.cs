@@ -23,7 +23,6 @@ namespace VaccinbevisVerifiering.Droid.Services
     {
         public async Task<String> ScanAsync()
         {
-            //var cameraResolutionSelector = new CameraResolutionSelector();
             var optionsCustom = new MobileBarcodeScanningOptions
             {
                 PossibleFormats = new List<ZXing.BarcodeFormat>() {
@@ -31,8 +30,10 @@ namespace VaccinbevisVerifiering.Droid.Services
                 },
                 UseNativeScanning = true,
                 TryHarder = true,
-                AutoRotate = true
+                AutoRotate = true,
+                CameraResolutionSelector = CameraResolutionSelector.SelectLowestResolutionMatchingDisplayAspectRatio
             };
+        
 
             var scanner = new MobileBarcodeScanner()
             {

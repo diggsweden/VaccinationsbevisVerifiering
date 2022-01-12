@@ -40,8 +40,6 @@ namespace VaccinbevisVerifiering
             CertificateManager.LoadCertificates();
             CertificateManager.LoadValueSets();
             await CertificateManager.LoadVaccineRules();
-
-            await EnsureUpdatedVersion();
         }
 
 

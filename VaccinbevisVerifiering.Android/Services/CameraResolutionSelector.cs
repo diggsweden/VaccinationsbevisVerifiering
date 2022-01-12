@@ -19,8 +19,10 @@ namespace VaccinbevisVerifiering.Droid.Services
         {
             const double aspectTolerance = 0.12;
             //calculating our targetRatio
-            var targetRatio = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Height;
 
+            var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
+            var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
+            var targetRatio = displayOrientationWidth / displayOrientationHeight;
             var result = availableResolutions
                 .OrderBy(r => r.Height * r.Width)
                 .FirstOrDefault(r => (double)r.Height / r.Width - targetRatio < aspectTolerance);
