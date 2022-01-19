@@ -61,7 +61,7 @@ namespace VaccinbevisVerifiering.Services.Vaccinregler.ValueSet
 
     public class AppVersion
     {
-        public string iOS { get; set; }
+        public string IOS { get; set; }
         public string Android { get; set; }
     }
 

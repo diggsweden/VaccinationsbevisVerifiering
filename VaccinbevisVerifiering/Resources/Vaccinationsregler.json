@@ -21,6 +21,16 @@
             "display": "COVID-19 Vaccine Janssen",
             "mindose": 1,
             "dayssincemindose": 14
+        },
+        "EU/1/21/1618": {
+            "display": "Nuvaxovid",
+            "mindose": 2,
+            "dayssincemindose": 14
+        },
+        "NVX-CoV2373": {
+            "display": "NVX-CoV2373 (deprecated)",
+            "mindose": 2,
+            "dayssincemindose": 14
         }
     },
     "appVersion": {
@@ -33,4 +43,4 @@
         "URN:UVCI:01:FR:T5DWTJYS4ZR8#4",
         "URN:UVCI:01:PL:1/AF2AA5873FAF45DFA826B8A01237BDC4"
     ]
-}
+ }

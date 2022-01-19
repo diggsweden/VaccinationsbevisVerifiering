@@ -34,7 +34,6 @@ namespace VaccinbevisVerifiering
         protected override void OnSleep()
         {
         }
-
         protected override async void OnResume()
         {
             CertificateManager.LoadCertificates();
@@ -49,7 +48,7 @@ namespace VaccinbevisVerifiering
             _latestVersion = Device.RuntimePlatform switch
             {
                 Device.Android => CertificateManager.VaccinRules.AppVersion.Android,
-                Device.iOS => CertificateManager.VaccinRules.AppVersion.iOS,
+                Device.iOS => CertificateManager.VaccinRules.AppVersion.IOS,
                 _ => null
             };
 

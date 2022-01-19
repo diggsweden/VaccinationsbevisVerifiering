@@ -18,12 +18,13 @@ namespace VaccinbevisVerifiering.ViewModels
     {
 
         private ICommand scanCommand;
-        private ICommand settingsCommand;
         private ICommand aboutCommand;
         private string _validKeysText;
-
+        public static CertificateManager CertificateManager { get; private set; }
         public MainViewModel()
         {
+            CertificateManager = new CertificateManager(new RestService());
+
             MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current, "Cancel", async (sender) =>
             {
                 try
@@ -65,14 +66,14 @@ namespace VaccinbevisVerifiering.ViewModels
             {
                 ValidKeysText = AppResources.NoPublicKeys;
             }
-            else if ((App.CertificateManager.TrustList.Iat + 86400) < App.CertificateManager.GetSecondsFromEpoc())
+            else if (((App.CertificateManager.TrustList.Iat + 86400) < App.CertificateManager.GetSecondsFromEpoc()) && ((App.CertificateManager.TrustList.Iat + 172800) > App.CertificateManager.GetSecondsFromEpoc()))
             {
-                // Check if we downloaded keys
+                // warn if downloaded keys is older than 24h
                 ValidKeysText = AppResources.OldPublicKeys;
             }
             else if ((App.CertificateManager.TrustList.Iat + 172800) < App.CertificateManager.GetSecondsFromEpoc())
             {
-                // Check if we downloaded keys
+                // warn if downloaded keys is older than 48h
                 ValidKeysText = AppResources.UpdatePublicKeys;
             }
             else
@@ -91,11 +92,15 @@ namespace VaccinbevisVerifiering.ViewModels
         public ICommand AboutCommand => aboutCommand ??
                 (aboutCommand = new Command(async () =>
                 {
+                    CertificateManager.LoadCertificates();
+                    CertificateManager.LoadValueSets();
+                    await CertificateManager.LoadVaccineRules();
                     await Application.Current.MainPage.Navigation.PushAsync(new AboutPage());
                 }));
 
         public ICommand ScanCommand
         {
+
             get
             {
                 return scanCommand ??
@@ -104,6 +109,7 @@ namespace VaccinbevisVerifiering.ViewModels
         }
 
         public async Task Scan() {
+
             try
             {
                 var scanner = DependencyService.Get<IQRScanningService>();
