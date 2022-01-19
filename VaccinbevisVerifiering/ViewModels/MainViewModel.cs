@@ -88,12 +88,6 @@ namespace VaccinbevisVerifiering.ViewModels
         }
         public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
-        public ICommand SettingsCommand => settingsCommand ??
-                (settingsCommand = new Command(async () =>
-                {
-                    await Application.Current.MainPage.Navigation.PushAsync(new SettingsPage());
-                }));
-
         public ICommand AboutCommand => aboutCommand ??
                 (aboutCommand = new Command(async () =>
                 {
