@@ -37,7 +37,7 @@
     <Folder Include="Services\Vaccinregler\ValueSet\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Vaccinationsregler.json" />
+    <EmbeddedResource Include="Resources\vaccinbevisverifiera.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\AppResources.resx">
@@ -67,10 +67,10 @@
     <None Remove="Resources\scan.png" />
     <None Remove="Resources\mobil.png" />
     <None Remove="Resources\flagga.png" />
+    <None Remove="Resources\vaccinbevisverifiera.json" />
     <None Remove="ZXing.Net.Mobile.Forms" />
     <None Remove="Services\Vaccinregler\" />
     <None Remove="Services\Vaccinregler\ValueSet\" />
-    <None Remove="Resources\Vaccinationsregler.json" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\scan.png" />
