@@ -466,6 +466,7 @@ namespace VaccinbevisVerifiering.Resources {
                 return ResourceManager.GetString("NoVerificationText", resourceCulture);
             }
         }
+        
         public static string PrivacyPolicyLink {
             get {
                 return ResourceManager.GetString("PrivacyPolicyLink", resourceCulture);
