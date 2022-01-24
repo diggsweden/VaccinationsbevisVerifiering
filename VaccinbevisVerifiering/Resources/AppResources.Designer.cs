@@ -358,6 +358,24 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More than .
+        /// </summary>
+        public static string NotApprovedMaxDaysSinceLastDosePartOne {
+            get {
+                return ResourceManager.GetString("NotApprovedMaxDaysSinceLastDosePartOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  days since the last vaccine dose.
+        /// </summary>
+        public static string NotApprovedMaxDaysSinceLastDosePartTwo {
+            get {
+                return ResourceManager.GetString("NotApprovedMaxDaysSinceLastDosePartTwo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not fully vaccinated.
         /// </summary>
         public static string NotApprovedNoOfDoses {

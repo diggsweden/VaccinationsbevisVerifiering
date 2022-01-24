@@ -66,15 +66,10 @@ namespace VaccinbevisVerifiering.ViewModels
             {
                 ValidKeysText = AppResources.NoPublicKeys;
             }
-            else if (((App.CertificateManager.TrustList.Iat + 120) < App.CertificateManager.GetSecondsFromEpoc()) && ((App.CertificateManager.TrustList.Iat + 240) > App.CertificateManager.GetSecondsFromEpoc()))
+            else if ((App.CertificateManager.TrustList.Iat + 172800) < App.CertificateManager.GetSecondsFromEpoc())
             {
-                // warn if downloaded keys is older than 24h
+                // warn if downloaded trustlist is older than 48h
                 ValidKeysText = AppResources.OldPublicKeys;
-            }
-            else if ((App.CertificateManager.TrustList.Iat + 240) < App.CertificateManager.GetSecondsFromEpoc())
-            {
-                // warn if downloaded keys is older than 48h
-                ValidKeysText = AppResources.UpdatePublicKeys;
             }
             else
             {

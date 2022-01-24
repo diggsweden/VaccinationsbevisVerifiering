@@ -366,4 +366,10 @@
   <data name="UpdateViewTitle" xml:space="preserve">
     <value>Update your app</value>
   </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartOne" xml:space="preserve">
+    <value>More than </value>
+  </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartTwo" xml:space="preserve">
+    <value> days since the last vaccine dose</value>
+  </data>
 </root>

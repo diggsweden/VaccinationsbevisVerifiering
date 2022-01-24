@@ -291,10 +291,15 @@ namespace VaccinbevisVerifiering.ViewModels
                 if (vac.Dn > rule.MinDose)
                 {
                     verified = true;
-                }else if (vac.Dn == rule.MinDose)
+                }
+                else if (vac.Dn == rule.MinDose)
                 {
                     var timespan = DateTimeOffset.Now - vac.Dt;
-                    if ( timespan.TotalDays>=rule.DaysSinceMinDose)
+                    if (rule.MaxDaysLastdose > 0 && timespan.TotalDays > rule.MaxDaysLastdose)
+                    {
+                        ResultText = AppResources.NotApprovedMaxDaysSinceLastDosePartOne + rule.MaxDaysLastdose + AppResources.NotApprovedMaxDaysSinceLastDosePartTwo;
+                    }
+                    else if (timespan.TotalDays >= rule.DaysSinceMinDose)
                     {
                         verified = true;
                     }

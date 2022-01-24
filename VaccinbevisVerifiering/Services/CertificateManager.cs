@@ -131,7 +131,7 @@ namespace VaccinbevisVerifiering.Services
                 }
             }
             // If trustlist is not set or it´s older than 24 hours refresh it
-            if (TrustList == null || (TrustList.Iat + 300) < GetSecondsFromEpoc())
+            if (TrustList == null || (TrustList.Iat + 86400) < GetSecondsFromEpoc())
             {
                 RefreshTrustListAsync();
             }
