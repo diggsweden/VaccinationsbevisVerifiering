@@ -493,7 +493,7 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revoked certificate.
+        ///   Looks up a localized string similar to Fraudulent certificate.
         /// </summary>
         public static string RevokedCertificateText {
             get {

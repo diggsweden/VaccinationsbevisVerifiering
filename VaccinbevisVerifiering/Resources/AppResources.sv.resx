@@ -349,7 +349,7 @@
     <value>Godkänd ikon</value>
   </data>
   <data name="RevokedCertificateText" xml:space="preserve">
-    <value>Revokerat bevis</value>
+    <value>Falskt bevis</value>
   </data>
   <data name="KeyModalErrorMessage" xml:space="preserve">
     <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>
