@@ -19,7 +19,7 @@ namespace VaccinbevisVerifiering
             CertificateManager = new CertificateManager(new RestService());
             MainPage = new NavigationPage(new MainPage()) { BarBackgroundColor = Color.White };
             Xamarin.Essentials.Preferences.Set("NoVerificationMode", false);
-            Xamarin.Essentials.Preferences.Set("ProductionMode", true);
+            Xamarin.Essentials.Preferences.Set("ProductionMode", false);
         }
 
         protected override async void OnStart()

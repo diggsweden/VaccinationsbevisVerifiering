@@ -135,7 +135,6 @@ namespace VaccinbevisVerifiering.Droid.Services
             int width;
             if (DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait)
             {
-
                 height = metrics.HeightPixels / 20;
                 width = height;
             }

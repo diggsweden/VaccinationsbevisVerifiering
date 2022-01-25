@@ -29,9 +29,9 @@ namespace VaccinbevisVerifiering.Droid.Services
                     ZXing.BarcodeFormat.QR_CODE
                 },
                 UseNativeScanning = true,
-                TryHarder = true,
+                TryHarder = false,
                 AutoRotate = true,
-                CameraResolutionSelector = CameraResolutionSelector.SelectLowestResolutionMatchingDisplayAspectRatio
+                //CameraResolutionSelector = CameraResolutionSelector.SelectLowestResolutionMatchingDisplayAspectRatio
             };
         
 
