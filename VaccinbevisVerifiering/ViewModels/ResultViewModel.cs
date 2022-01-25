@@ -287,21 +287,26 @@ namespace VaccinbevisVerifiering.ViewModels
 
             if ( rule != null)
             {
-                // Vaccine are valid, check min dose and days since min dose
-                if (vac.Dn > rule.MinDose)
+                //Vaccine is valid. Check time past since last dose
+                var timespan = DateTimeOffset.Now - vac.Dt;
+                //Check if latest dose is a booster dose and acceptance period
+                if (vac.Dn > rule.MinDose )
                 {
-                    verified = true;
+                    if (rule.MaxDaysLastdose == 0 || timespan.TotalDays <= rule.MaxDaysLastdose)
+                        verified = true;
+                    else
+                        ResultText = AppResources.NotApprovedMaxDaysSinceLastDosePartOne + rule.MaxDaysLastdose + AppResources.NotApprovedMaxDaysSinceLastDosePartTwo;
                 }
+                //Vaccin series completed, check acceptance period for last dose
                 else if (vac.Dn == rule.MinDose)
                 {
-                    var timespan = DateTimeOffset.Now - vac.Dt;
-                    if (rule.MaxDaysLastdose > 0 && timespan.TotalDays > rule.MaxDaysLastdose)
+                    // Vaccine are valid and serie completed, check min dose and days since min dose
+                    if (timespan.TotalDays >= rule.DaysSinceMinDose)
                     {
-                        ResultText = AppResources.NotApprovedMaxDaysSinceLastDosePartOne + rule.MaxDaysLastdose + AppResources.NotApprovedMaxDaysSinceLastDosePartTwo;
-                    }
-                    else if (timespan.TotalDays >= rule.DaysSinceMinDose)
-                    {
-                        verified = true;
+                        if (rule.MaxDaysLastdose == 0 || timespan.TotalDays <= rule.MaxDaysLastdose)
+                            verified = true;
+                        else
+                            ResultText = AppResources.NotApprovedMaxDaysSinceLastDosePartOne + rule.MaxDaysLastdose + AppResources.NotApprovedMaxDaysSinceLastDosePartTwo;
                     }
                     else
                     {
