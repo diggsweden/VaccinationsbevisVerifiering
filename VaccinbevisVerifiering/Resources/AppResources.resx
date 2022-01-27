@@ -372,4 +372,7 @@
   <data name="NotApprovedMaxDaysSinceLastDosePartTwo" xml:space="preserve">
     <value> days since the last vaccine dose</value>
   </data>
+  <data name="UpdateViewPageText" xml:space="preserve">
+    <value>Back button deactivated, update is mandatory</value>
+  </data>
 </root>

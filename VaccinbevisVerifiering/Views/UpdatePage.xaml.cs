@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using VaccinbevisVerifiering.Resources;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -16,17 +17,24 @@ namespace VaccinbevisVerifiering.Views
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        async void Button_Clicked(System.Object sender, System.EventArgs e)
+        protected override bool OnBackButtonPressed()
+        {
+            base.OnBackButtonPressed();
+            App.UpdatePageStore.UpdatePageVisable = false;
+            return false; 
+        }
+
+        private async void Button_Clicked(System.Object sender, System.EventArgs e)
         {
             string url = string.Empty;
             var location = RegionInfo.CurrentRegion.Name.ToLower();
-            await Application.Current.MainPage.Navigation.PopAsync();
             if (Device.RuntimePlatform == Device.Android)
                 url = "https://play.google.com/store/apps/details?id=se.digg.dccvalidator";
-            else if (Device.RuntimePlatform == Device.iOS)
+            else
                 url = "https://apps.apple.com/" + location + "/app/vaccinationsbevis-verifiering/id1597745749";
             await Browser.OpenAsync(url, BrowserLaunchMode.External);
-            
+
+
         }
     }
 }

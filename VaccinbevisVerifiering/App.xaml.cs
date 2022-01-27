@@ -19,7 +19,7 @@ namespace VaccinbevisVerifiering
             CertificateManager = new CertificateManager(new RestService());
             MainPage = new NavigationPage(new MainPage()) { BarBackgroundColor = Color.White };
             Xamarin.Essentials.Preferences.Set("NoVerificationMode", false);
-            Xamarin.Essentials.Preferences.Set("ProductionMode", false);
+            Xamarin.Essentials.Preferences.Set("ProductionMode", true);
         }
 
         protected override async void OnStart()
@@ -39,6 +39,8 @@ namespace VaccinbevisVerifiering
             CertificateManager.LoadCertificates();
             CertificateManager.LoadValueSets();
             await CertificateManager.LoadVaccineRules();
+
+            await EnsureUpdatedVersion();
         }
 
 
@@ -58,9 +60,15 @@ namespace VaccinbevisVerifiering
             var latestMajorVersion = int.Parse(latestVersionArray[0]);
             var latestMinorVersion = int.Parse(latestVersionArray[1]);
 
-            if (latestMajorVersion > deviceVersion.Major || latestMinorVersion > deviceVersion.Minor)
+            if ((latestMajorVersion > deviceVersion.Major || latestMinorVersion > deviceVersion.Minor) && !UpdatePageStore.UpdatePageVisable)
+            {
+                UpdatePageStore.UpdatePageVisable = true;
                 await Current.MainPage.Navigation.PushAsync(new UpdatePage());
-                
+            }
+        }
+        public static class UpdatePageStore
+        {
+            public static bool UpdatePageVisable { get; internal set; }
         }
     }
 }

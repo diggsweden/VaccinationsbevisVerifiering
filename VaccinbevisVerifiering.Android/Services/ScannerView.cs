@@ -39,8 +39,6 @@ namespace VaccinbevisVerifiering.Droid.Services
         private Android.Graphics.Bitmap litTorchIcon;
         private Android.Graphics.Bitmap unlitTorchIcon;
         private Android.Graphics.Bitmap cancelIcon;
-        private Rect torchIconDimRect;
-        private Rect cancelIconDimRect;
         private bool hasTorch = false;
         private bool torchOn = false;
         readonly string scanText;
@@ -74,13 +72,11 @@ namespace VaccinbevisVerifiering.Droid.Services
             if (hasTorch)
             {
                 //Load torch button icons
-                torchIconDimRect = new Rect(0, 0, iconWidth, iconHeight);
                 litTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash, iconWidth, iconHeight);
                 unlitTorchIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.flash_off, iconWidth, iconHeight);
 
             }
             //Load cancel button icons
-            cancelIconDimRect = new Rect(0, 0, iconWidth, iconHeight);
             cancelIcon = ImageHelper.DecodeSampledBitmapFromResource(Resources, Resource.Drawable.avbryt, iconWidth, iconHeight);
             // Initialize these once for performance rather than calling them every time in onDraw()
             defaultPaint = new Paint(PaintFlags.AntiAlias);
@@ -135,12 +131,12 @@ namespace VaccinbevisVerifiering.Droid.Services
             int width;
             if (DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait)
             {
-                height = metrics.HeightPixels / 20;
+                height = metrics.HeightPixels / 30;
                 width = height;
             }
             else
             {
-                height = metrics.WidthPixels / 20;
+                height = metrics.WidthPixels / 30;
                 width = height;
             }
             int leftOffset = metrics.WidthPixels - (width + 50);
@@ -149,18 +145,6 @@ namespace VaccinbevisVerifiering.Droid.Services
 
             return cancelRect;
         }
-
-        Rect GetCancelIconDimRect()
-        {
-            return cancelIconDimRect;
-        }
-
-        Rect GetTorchIconDimRect()
-        {
-            return torchIconDimRect;
-        }
-
-
         Rect GetTorchButtonRect()
         {
             var metrics = Resources.DisplayMetrics;
@@ -188,13 +172,12 @@ namespace VaccinbevisVerifiering.Droid.Services
         Rect GetTorchIconRect()
         {
             var metrics = Resources.DisplayMetrics;
-            int height; 
+            int height;
             int width;
             int topOffset;
 
             if (DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait)
             {
-
                 height = metrics.HeightPixels / 12;
                 width = height;
                 topOffset = metrics.HeightPixels / 5 * 4;
@@ -207,7 +190,7 @@ namespace VaccinbevisVerifiering.Droid.Services
             }
 
             int leftOffset = metrics.WidthPixels / 2 - width / 2;
-            
+
             var torchRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
 
             return torchRect;
@@ -277,17 +260,12 @@ namespace VaccinbevisVerifiering.Droid.Services
             }
             if (cancelIcon != null && cancelPressed != true)
             {
-
-                canvas.DrawRect(GetCancelButtonRect(), buttonPaint);
-                canvas.DrawBitmap(cancelIcon, GetCancelIconDimRect(), GetCancelIconRect(), defaultPaint);
-
+                canvas.DrawBitmap(cancelIcon, null, GetCancelIconRect(), null);
 
                 if (hasTorch && litTorchIcon != null && unlitTorchIcon != null)
                 {
-                    canvas.DrawRect(GetTorchButtonRect(), buttonPaint);
-                    canvas.DrawBitmap(torchOn ? litTorchIcon : unlitTorchIcon, GetTorchIconDimRect(), GetTorchIconRect(), defaultPaint);
+                    canvas.DrawBitmap(torchOn ? litTorchIcon : unlitTorchIcon, null, GetTorchIconRect(), null);
                 }
-
             }
             base.OnDraw(canvas);
 

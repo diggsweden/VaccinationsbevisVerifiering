@@ -12,10 +12,6 @@ namespace VaccinbevisVerifiering.Views
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
         }
-        private async void NavigateButton_OnClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }
         protected void VerifierFaq(object sender, EventArgs e)
         {
             Launcher.OpenAsync(new Uri("https://www.digg.se/utveckling-av-digital-forvaltning/verifieringslosning-for-vaccinationsbevis"));

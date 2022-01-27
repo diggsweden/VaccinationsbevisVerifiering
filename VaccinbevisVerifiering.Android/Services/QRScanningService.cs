@@ -30,7 +30,7 @@ namespace VaccinbevisVerifiering.Droid.Services
                 },
                 UseNativeScanning = true,
                 TryHarder = false,
-                AutoRotate = true,
+                AutoRotate = true
                 //CameraResolutionSelector = CameraResolutionSelector.SelectLowestResolutionMatchingDisplayAspectRatio
             };
         

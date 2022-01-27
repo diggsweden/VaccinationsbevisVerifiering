@@ -19,14 +19,14 @@ namespace VaccinbevisVerifiering.ViewModels
         public ICommand BackCommand => backCommand ??
         (backCommand = new Command(async () =>
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+            await App.Current.MainPage.Navigation.PopAsync();
         }));
 
         public String AppVersion
         {
             get { return AppResources.AppVersion + " " + VersionTracking.CurrentVersion; }
         }
-        
+
         public String PublicKeyVersion
         {
             get { return AppResources.KeyVersion + " " + (App.CertificateManager.TrustList != null ? SecondsFromEpocToDateTime(App.CertificateManager.TrustList.Iat).ToString() : AppResources.MissingDataText); }

@@ -709,6 +709,15 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back button deactivated, update is mandatory.
+        /// </summary>
+        public static string UpdateViewPageText {
+            get {
+                return ResourceManager.GetString("UpdateViewPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update your app.
         /// </summary>
         public static string UpdateViewTitle {

@@ -60,7 +60,7 @@ namespace VaccinbevisVerifiering.ViewModels
             ValidateKeys();
         }
 
-        private void ValidateKeys()
+        public void ValidateKeys()
         {
             if (App.CertificateManager.TrustList == null)
             {
@@ -76,8 +76,7 @@ namespace VaccinbevisVerifiering.ViewModels
                 ValidKeysText = null;
             }
 
-            if (ValidKeysText == AppResources.NoPublicKeys || ValidKeysText == AppResources.OldPublicKeys ||
-                ValidKeysText == AppResources.UpdatePublicKeys)
+            if (ValidKeysText == AppResources.NoPublicKeys || ValidKeysText == AppResources.OldPublicKeys)
             {
                 MessagingCenter.Send(Application.Current, "DisplayPublicKeysError");
             }
@@ -90,6 +89,7 @@ namespace VaccinbevisVerifiering.ViewModels
                     CertificateManager.LoadCertificates();
                     CertificateManager.LoadValueSets();
                     await CertificateManager.LoadVaccineRules();
+                    ValidateKeys();
                     await Application.Current.MainPage.Navigation.PushAsync(new AboutPage());
                 }));
 
