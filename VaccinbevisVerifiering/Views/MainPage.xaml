@@ -40,7 +40,7 @@
                 <StackLayout Grid.Row="1" Margin="0,70,0,0">
                     <Button Text="{x:Static resource:AppResources.ScanButtonText}" HorizontalOptions="FillAndExpand" Command="{Binding ScanCommand}"
                     BackgroundColor="#5A6751" TextColor="White"
-                    FontAttributes="Bold" FontSize="Large" CornerRadius="30" Margin="30,0,30,0"/>
+                    FontAttributes="Bold" FontSize="Large" HeightRequest="60" CornerRadius="30" Margin="30,0,30,0"/>
                     <Label Style="{StaticResource Link}" Text="{x:Static resource:AppResources.LinkText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" MaxLines="3" Margin="30,20,30,0">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding TapCommand}"

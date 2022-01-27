@@ -235,14 +235,14 @@
     <BundleResource Include="..\VaccinbevisVerifiering\Resources\flash_off.png">
       <Link>Resources\flash_off.png</Link>
     </BundleResource>
-    <BundleResource Include="..\VaccinbevisVerifiering\Resources\Vaccinationsregler.json">
-      <Link>Resources\Vaccinationsregler.json</Link>
-    </BundleResource>
     <BundleResource Include="..\VaccinbevisVerifiering\Resources\digg_centered_2.png">
       <Link>Resources\digg_centered_2.png</Link>
     </BundleResource>
     <BundleResource Include="..\VaccinbevisVerifiering\Resources\abort.png">
       <Link>Resources\abort.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\VaccinbevisVerifiering\Resources\vaccinbevisverifiera.json">
+      <Link>Resources\vaccinbevisverifiera.json</Link>
     </BundleResource>
   </ItemGroup>
   <ItemGroup>
