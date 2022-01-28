@@ -349,7 +349,7 @@
     <value>Valid icon</value>
   </data>
   <data name="RevokedCertificateText" xml:space="preserve">
-    <value>Revoked certificate</value>
+    <value>Fraudulent certificate</value>
   </data>
   <data name="KeyModalErrorMessage" xml:space="preserve">
     <value>Connect the app to internet and the keys will be downloaded automatically</value>
@@ -365,5 +365,14 @@
   </data>
   <data name="UpdateViewTitle" xml:space="preserve">
     <value>Update your app</value>
+  </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartOne" xml:space="preserve">
+    <value>More than </value>
+  </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartTwo" xml:space="preserve">
+    <value> days since the last vaccine dose</value>
+  </data>
+  <data name="UpdateViewPageText" xml:space="preserve">
+    <value>Back button deactivated, update is mandatory</value>
   </data>
 </root>

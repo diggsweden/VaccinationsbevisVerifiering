@@ -358,6 +358,24 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More than .
+        /// </summary>
+        public static string NotApprovedMaxDaysSinceLastDosePartOne {
+            get {
+                return ResourceManager.GetString("NotApprovedMaxDaysSinceLastDosePartOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  days since the last vaccine dose.
+        /// </summary>
+        public static string NotApprovedMaxDaysSinceLastDosePartTwo {
+            get {
+                return ResourceManager.GetString("NotApprovedMaxDaysSinceLastDosePartTwo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not fully vaccinated.
         /// </summary>
         public static string NotApprovedNoOfDoses {
@@ -475,7 +493,7 @@ namespace VaccinbevisVerifiering.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revoked certificate.
+        ///   Looks up a localized string similar to Fraudulent certificate.
         /// </summary>
         public static string RevokedCertificateText {
             get {
@@ -687,6 +705,15 @@ namespace VaccinbevisVerifiering.Resources {
         public static string UpdateViewLatestVersionText {
             get {
                 return ResourceManager.GetString("UpdateViewLatestVersionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back button deactivated, update is mandatory.
+        /// </summary>
+        public static string UpdateViewPageText {
+            get {
+                return ResourceManager.GetString("UpdateViewPageText", resourceCulture);
             }
         }
         

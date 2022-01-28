@@ -14,7 +14,7 @@ namespace VaccinbevisVerifiering.Views
             if (!MainPageStore.HasKeyErrorSubscription)
                 MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current,
                     "DisplayPublicKeysError", ShowKeyErrorAlert);
-            // Title = AppResources.HeaderText;
+
             MainPageStore.HasKeyErrorSubscription = true;
         }
 

@@ -60,29 +60,23 @@ namespace VaccinbevisVerifiering.ViewModels
             ValidateKeys();
         }
 
-        private void ValidateKeys()
+        public void ValidateKeys()
         {
             if (App.CertificateManager.TrustList == null)
             {
                 ValidKeysText = AppResources.NoPublicKeys;
             }
-            else if (((App.CertificateManager.TrustList.Iat + 86400) < App.CertificateManager.GetSecondsFromEpoc()) && ((App.CertificateManager.TrustList.Iat + 172800) > App.CertificateManager.GetSecondsFromEpoc()))
-            {
-                // warn if downloaded keys is older than 24h
-                ValidKeysText = AppResources.OldPublicKeys;
-            }
             else if ((App.CertificateManager.TrustList.Iat + 172800) < App.CertificateManager.GetSecondsFromEpoc())
             {
-                // warn if downloaded keys is older than 48h
-                ValidKeysText = AppResources.UpdatePublicKeys;
+                // warn if downloaded trustlist is older than 48h
+                ValidKeysText = AppResources.OldPublicKeys;
             }
             else
             {
                 ValidKeysText = null;
             }
 
-            if (ValidKeysText == AppResources.NoPublicKeys || ValidKeysText == AppResources.OldPublicKeys ||
-                ValidKeysText == AppResources.UpdatePublicKeys)
+            if (ValidKeysText == AppResources.NoPublicKeys || ValidKeysText == AppResources.OldPublicKeys)
             {
                 MessagingCenter.Send(Application.Current, "DisplayPublicKeysError");
             }
@@ -95,6 +89,7 @@ namespace VaccinbevisVerifiering.ViewModels
                     CertificateManager.LoadCertificates();
                     CertificateManager.LoadValueSets();
                     await CertificateManager.LoadVaccineRules();
+                    ValidateKeys();
                     await Application.Current.MainPage.Navigation.PushAsync(new AboutPage());
                 }));
 

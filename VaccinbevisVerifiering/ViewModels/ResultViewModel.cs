@@ -287,16 +287,28 @@ namespace VaccinbevisVerifiering.ViewModels
 
             if ( rule != null)
             {
-                // Vaccine are valid, check min dose and days since min dose
-                if (vac.Dn > rule.MinDose)
+                //Vaccine is valid. Check time past since last dose
+                var timespan = DateTimeOffset.Now - vac.Dt;
+                //Check if latest dose is a booster dose
+                if (vac.Dn > rule.MinDose )
                 {
-                    verified = true;
-                }else if (vac.Dn == rule.MinDose)
-                {
-                    var timespan = DateTimeOffset.Now - vac.Dt;
-                    if ( timespan.TotalDays>=rule.DaysSinceMinDose)
-                    {
+                    //Check acceptance period for last dose
+                    if (rule.MaxDaysLastdose == 0 || timespan.TotalDays <= rule.MaxDaysLastdose)
                         verified = true;
+                    else
+                        ResultText = AppResources.NotApprovedMaxDaysSinceLastDosePartOne + rule.MaxDaysLastdose + AppResources.NotApprovedMaxDaysSinceLastDosePartTwo;
+                }
+                //Check for completed vaccination serie
+                else if (vac.Dn == rule.MinDose)
+                {
+                    // Check minimum days since last dose in completed serie 
+                    if (timespan.TotalDays >= rule.DaysSinceMinDose)
+                    {
+                        //Check acceptance period for last dose
+                        if (rule.MaxDaysLastdose == 0 || timespan.TotalDays <= rule.MaxDaysLastdose)
+                            verified = true;
+                        else
+                            ResultText = AppResources.NotApprovedMaxDaysSinceLastDosePartOne + rule.MaxDaysLastdose + AppResources.NotApprovedMaxDaysSinceLastDosePartTwo;
                     }
                     else
                     {

@@ -57,6 +57,8 @@ namespace VaccinbevisVerifiering.Services.Vaccinregler.ValueSet
 
         [JsonProperty("dayssincemindose")]
         public int DaysSinceMinDose { get; set; }
+        [JsonProperty("maxdayslastdose")]
+        public int MaxDaysLastdose { get; set; }
     }
 
     public class AppVersion

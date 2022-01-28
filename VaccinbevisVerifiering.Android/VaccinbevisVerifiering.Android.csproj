@@ -104,8 +104,8 @@
       <Generator>
       </Generator>
     </AndroidResource>
-    <AndroidResource Include="..\VaccinbevisVerifiering\Resources\Vaccinationsregler.json">
-      <Link>Resources\raw\Vaccinationsregler.json</Link>
+    <AndroidResource Include="..\VaccinbevisVerifiering\Resources\vaccinbevisverifiera.json">
+      <Link>Resources\raw\vaccinbevisverifiera.json</Link>
       <SubType>
       </SubType>
       <Generator>

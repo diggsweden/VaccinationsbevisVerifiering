@@ -190,7 +190,7 @@
     <value>Ogiltigt signerings certifikat</value>
   </data>
   <data name="NoSigningCertifcateCouldBeFound" xml:space="preserve">
-    <value>Inget signerings certifikat hittades</value>
+    <value>Inget signeringscertifikat hittades</value>
   </data>
   <data name="DCCExpired" xml:space="preserve">
     <value>Vaccinationsbevis utgånget</value>
@@ -349,7 +349,7 @@
     <value>Godkänd ikon</value>
   </data>
   <data name="RevokedCertificateText" xml:space="preserve">
-    <value>Revokerat bevis</value>
+    <value>Falskt bevis</value>
   </data>
   <data name="KeyModalErrorMessage" xml:space="preserve">
     <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>
@@ -365,5 +365,14 @@
   </data>
   <data name="UpdateViewTitle" xml:space="preserve">
     <value>Uppdatera din app</value>
+  </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartOne" xml:space="preserve">
+    <value>Mer än </value>
+  </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartTwo" xml:space="preserve">
+    <value> dagar sedan senaste vaccinering</value>
+  </data>
+  <data name="UpdateViewPageText" xml:space="preserve">
+    <value>Tillbakaknappen är deaktiverad, uppdatering nödvändig</value>
   </data>
 </root>

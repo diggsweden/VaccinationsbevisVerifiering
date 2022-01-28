@@ -29,7 +29,7 @@ namespace VaccinbevisVerifiering.Services
         public DSC_TL TrustList { get; private set; }
         public VaccinRules VaccinRules { get; private set; }
         private readonly string TrustListFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DscTrustList.json");
-        private readonly string VaccinRulesFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vaccinationsregler.json");
+        private readonly string VaccinRulesFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "vaccinbevisverifiera.json");
         private readonly string ValueSetPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
         public CertificateManager(IRestService service)
@@ -63,7 +63,7 @@ namespace VaccinbevisVerifiering.Services
                     if (Device.RuntimePlatform == Device.Android)
                     {
                         var assembly = IntrospectionExtensions.GetTypeInfo(typeof(CertificateManager)).Assembly;
-                        Stream stream = assembly.GetManifestResourceStream("VaccinbevisVerifiering.Resources.Vaccinationsregler.json");
+                        Stream stream = assembly.GetManifestResourceStream("VaccinbevisVerifiering.Resources.vaccinbevisverifiera.json");
 
                         using (var reader = new StreamReader(stream))
                         {
@@ -72,7 +72,7 @@ namespace VaccinbevisVerifiering.Services
                     }
                     else if (Device.RuntimePlatform == Device.iOS)
                     {
-                        json = await File.ReadAllTextAsync("Vaccinationsregler.json");
+                        json = await File.ReadAllTextAsync("vaccinbevisverifiera.json");
                     }
 
                     VaccinRules = VaccinRules.FromJson(json);
