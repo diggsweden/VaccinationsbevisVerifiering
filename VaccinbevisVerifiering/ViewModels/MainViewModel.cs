@@ -18,12 +18,13 @@ namespace VaccinbevisVerifiering.ViewModels
     {
 
         private ICommand scanCommand;
-        private ICommand settingsCommand;
         private ICommand aboutCommand;
         private string _validKeysText;
-
+        public static CertificateManager CertificateManager { get; private set; }
         public MainViewModel()
         {
+            CertificateManager = new CertificateManager(new RestService());
+
             MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current, "Cancel", async (sender) =>
             {
                 try
@@ -59,43 +60,42 @@ namespace VaccinbevisVerifiering.ViewModels
             ValidateKeys();
         }
 
-        private void ValidateKeys()
+        public void ValidateKeys()
         {
             if (App.CertificateManager.TrustList == null)
             {
                 ValidKeysText = AppResources.NoPublicKeys;
             }
-            else if ((App.CertificateManager.TrustList.Iat + 86400) < App.CertificateManager.GetSecondsFromEpoc())
-            {
-                // Check if we downloaded keys
-                ValidKeysText = AppResources.OldPublicKeys;
-            }
             else if ((App.CertificateManager.TrustList.Iat + 172800) < App.CertificateManager.GetSecondsFromEpoc())
             {
-                // Check if we downloaded keys
-                ValidKeysText = AppResources.UpdatePublicKeys;
+                // warn if downloaded trustlist is older than 48h
+                ValidKeysText = AppResources.OldPublicKeys;
             }
             else
             {
                 ValidKeysText = null;
             }
+
+            if (ValidKeysText == AppResources.NoPublicKeys || ValidKeysText == AppResources.OldPublicKeys)
+            {
+                MessagingCenter.Send(Application.Current, "DisplayPublicKeysError");
+            }
         }
         public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
-
-        public ICommand SettingsCommand => settingsCommand ??
-                (settingsCommand = new Command(async () =>
-                {
-                    await Application.Current.MainPage.Navigation.PushAsync(new SettingsPage());
-                }));
 
         public ICommand AboutCommand => aboutCommand ??
                 (aboutCommand = new Command(async () =>
                 {
+                    CertificateManager.LoadCertificates();
+                    CertificateManager.LoadValueSets();
+                    await CertificateManager.LoadVaccineRules();
+                    ValidateKeys();
                     await Application.Current.MainPage.Navigation.PushAsync(new AboutPage());
                 }));
 
         public ICommand ScanCommand
         {
+
             get
             {
                 return scanCommand ??
@@ -104,6 +104,7 @@ namespace VaccinbevisVerifiering.ViewModels
         }
 
         public async Task Scan() {
+
             try
             {
                 var scanner = DependencyService.Get<IQRScanningService>();

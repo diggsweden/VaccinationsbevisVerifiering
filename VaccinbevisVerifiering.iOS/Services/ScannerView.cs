@@ -80,7 +80,7 @@ namespace VaccinbevisVerifiering.iOS.Services
 			cancelButton.SetBackgroundImage(UIImage.FromBundle("avbryt.png"), UIControlState.Normal);
 			cancelButton.TintColor = UIColor.Clear;
 			cancelButton.SetTitle(cancelText, UIControlState.Normal);
-			cancelButton.Frame = new CGRect(overlaySize.Width / 2 - 30, overlaySize.Height * 0.85f, 60, 60);
+			cancelButton.Frame = new CGRect(overlaySize.Width - 30, overlaySize.Height * 0.1f, 30, 30);
 			cancelButton.AutoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleLeftMargin;
 
 //			cancelButton.TitleEdgeInsets = new UIEdgeInsets(0, 40, 0, 0);
@@ -97,8 +97,8 @@ namespace VaccinbevisVerifiering.iOS.Services
 			if (scanTextLabel != null)
 				scanTextLabel.Frame = topBg.Frame;
 
-			torchButton.Frame = new CGRect(overlaySize.Width / 2 - 30, overlaySize.Height * 0.75f, 60, 60);
-			cancelButton.Frame = new CGRect(overlaySize.Width / 2 - 30, overlaySize.Height * 0.85f, 60, 60);
+			torchButton.Frame = new CGRect(overlaySize.Width / 2 - 30, overlaySize.Height * 0.8f, 60, 60);
+			cancelButton.Frame = new CGRect(overlaySize.Width - 40, overlaySize.Height * 0.03f, 30, 30);
 		}
 
 		public void Destroy()

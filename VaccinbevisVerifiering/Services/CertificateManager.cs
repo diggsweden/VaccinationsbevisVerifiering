@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using VaccinbevisVerifiering.Services.CWT.Certificates;
 using VaccinbevisVerifiering.Services.DGC.ValueSet;
 using VaccinbevisVerifiering.Services.Vaccinregler.ValueSet;
@@ -28,7 +29,7 @@ namespace VaccinbevisVerifiering.Services
         public DSC_TL TrustList { get; private set; }
         public VaccinRules VaccinRules { get; private set; }
         private readonly string TrustListFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DscTrustList.json");
-        private readonly string VaccinRulesFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vaccinationsregler.json");
+        private readonly string VaccinRulesFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "vaccinbevisverifiera.json");
         private readonly string ValueSetPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
         public CertificateManager(IRestService service)
@@ -42,27 +43,27 @@ namespace VaccinbevisVerifiering.Services
             {
                 TrustList = trustList;
                 await File.WriteAllTextAsync(TrustListFileName, DSC_TLSerialize.ToJson(trustList));
-                MessagingCenter.Send(Application.Current, "PublicKeysUpdated");
             }
+            MessagingCenter.Send(Application.Current, "PublicKeysUpdated");
         }
 
-        public async void RefreshVaccineRulesAsync()
+        public async Task RefreshVaccineRulesAsync()
         {
             VaccinRules vaccineRules = await _restService.RefreshVaccinRulesAsync();
-            if (vaccineRules != null && vaccineRules.ValidVaccines != null && vaccineRules.ValidVaccines.Count > 0 )
+            if (vaccineRules != null && vaccineRules.ValidVaccines != null && vaccineRules.ValidVaccines.Count > 0)
             {
                 VaccinRules = vaccineRules;
                 await File.WriteAllTextAsync(VaccinRulesFileName, VaccinRulesSerialize.ToJson(vaccineRules));
             }
             else
             {
-                if( !File.Exists(VaccinRulesFileName))
+                if (!File.Exists(VaccinRulesFileName))
                 {
                     string json = "";
                     if (Device.RuntimePlatform == Device.Android)
                     {
                         var assembly = IntrospectionExtensions.GetTypeInfo(typeof(CertificateManager)).Assembly;
-                        Stream stream = assembly.GetManifestResourceStream("VaccinbevisVerifiering.Resources.Vaccinationsregler.json");
+                        Stream stream = assembly.GetManifestResourceStream("VaccinbevisVerifiering.Resources.vaccinbevisverifiera.json");
 
                         using (var reader = new StreamReader(stream))
                         {
@@ -71,7 +72,7 @@ namespace VaccinbevisVerifiering.Services
                     }
                     else if (Device.RuntimePlatform == Device.iOS)
                     {
-                        json = await File.ReadAllTextAsync("Vaccinationsregler.json");
+                        json = await File.ReadAllTextAsync("vaccinbevisverifiera.json");
                     }
 
                     VaccinRules = VaccinRules.FromJson(json);
@@ -89,7 +90,7 @@ namespace VaccinbevisVerifiering.Services
             Dictionary<string, string> valueSets = await _restService.RefreshValueSetAsync();
             if (valueSets != null && valueSets.Keys != null && valueSets.Keys.Count > 0)
             {
-                foreach(KeyValuePair<string, string> entry in valueSets)
+                foreach (KeyValuePair<string, string> entry in valueSets)
                 {
                     _ = File.WriteAllTextAsync(Path.Combine(ValueSetPath, entry.Key), entry.Value);
                     ValueSets[entry.Key] = ValueSet.FromJson(entry.Value);
@@ -104,7 +105,7 @@ namespace VaccinbevisVerifiering.Services
             }
             foreach (string file in Constants.ValueSets)
             {
-                if(File.Exists(Path.Combine(ValueSetPath, file)))
+                if (File.Exists(Path.Combine(ValueSetPath, file)))
                 {
                     ValueSet valueSet = ValueSet.FromJson(File.ReadAllText(Path.Combine(ValueSetPath, file)));
                     ValueSets[file] = valueSet;
@@ -136,7 +137,7 @@ namespace VaccinbevisVerifiering.Services
             }
         }
 
-        public void LoadVaccineRules()
+        public async Task LoadVaccineRules()
         {
             if (VaccinRules == null && File.Exists(VaccinRulesFileName))
             {
@@ -144,7 +145,7 @@ namespace VaccinbevisVerifiering.Services
             }
             else
             {
-                RefreshVaccineRulesAsync();
+                await RefreshVaccineRulesAsync();
             }
         }
 
@@ -159,16 +160,16 @@ namespace VaccinbevisVerifiering.Services
             List<AsymmetricKeyParameter> publicKeys = new List<AsymmetricKeyParameter>();
 
             // No TrustList means no keys to match with
-            if( TrustList == null)
+            if (TrustList == null)
             {
                 return publicKeys;
             }
 
-            List<DscTrust> trusts=new List<DscTrust>();
-            if( country != null && country.Length > 0 && TrustList.DscTrustList.ContainsKey(country) )
+            List<DscTrust> trusts = new List<DscTrust>();
+            if (country != null && country.Length > 0 && TrustList.DscTrustList.ContainsKey(country))
             {
                 DscTrust dscTrust = TrustList.DscTrustList.GetValueOrDefault(country);
-                if( dscTrust != null)
+                if (dscTrust != null)
                 {
                     trusts.Add(dscTrust);
                 }
@@ -178,16 +179,16 @@ namespace VaccinbevisVerifiering.Services
                 trusts.AddRange(TrustList.DscTrustList.Values);
             }
 
-            foreach( DscTrust trust in trusts)
+            foreach (DscTrust trust in trusts)
             {
                 foreach (Key key in trust.Keys)
                 {
                     string kidStr = Convert.ToBase64String(kid);
-                        //.Replace('+', '-')
-                        //.Replace('/', '_');
+                    //.Replace('+', '-')
+                    //.Replace('/', '_');
                     if (kid == null || key.Kid == null || key.Kid.Equals(kidStr))
                     {
-                        if( key.Kty.Equals("EC"))
+                        if (key.Kty.Equals("EC"))
                         {
                             X9ECParameters x9 = ECNamedCurveTable.GetByName(key.Crv);
                             ECPoint point = x9.Curve.CreatePoint(Base64UrlDecodeToBigInt(key.X), Base64UrlDecodeToBigInt(key.Y));
@@ -196,7 +197,7 @@ namespace VaccinbevisVerifiering.Services
                             ECPublicKeyParameters pubKey = new ECPublicKeyParameters(point, dParams);
                             publicKeys.Add(pubKey);
                         }
-                        else if( key.Kty.Equals("RSA"))
+                        else if (key.Kty.Equals("RSA"))
                         {
                             RsaKeyParameters pubKey = new RsaKeyParameters(false, Base64UrlDecodeToBigInt(key.N), Base64UrlDecodeToBigInt(key.E));
                             publicKeys.Add(pubKey);
@@ -219,7 +220,7 @@ namespace VaccinbevisVerifiering.Services
                 default:
                     throw new Exception("Illegal base64url string!");
             }
-            return new BigInteger(1,Convert.FromBase64String(value));
+            return new BigInteger(1, Convert.FromBase64String(value));
         }
     }
 }

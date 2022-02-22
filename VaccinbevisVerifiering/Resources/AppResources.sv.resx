@@ -190,7 +190,7 @@
     <value>Ogiltigt signerings certifikat</value>
   </data>
   <data name="NoSigningCertifcateCouldBeFound" xml:space="preserve">
-    <value>Inget signerings certifikat hittades</value>
+    <value>Inget signeringscertifikat hittades</value>
   </data>
   <data name="DCCExpired" xml:space="preserve">
     <value>Vaccinationsbevis utgånget</value>
@@ -216,7 +216,6 @@
   <data name="UpdatePublicKeys" xml:space="preserve">
     <value>Uppdatera publika nycklar</value>
   </data>
-
   <data name="FirstnameLabel" xml:space="preserve">
     <value>Förnamn: </value>
   </data>
@@ -311,7 +310,7 @@
     <value>Vanliga frågor</value>
   </data>
   <data name="AboutText" xml:space="preserve">
-    <value>Verifieringsapp för Covidbevis utvecklad av Myndigheten för Digital förvaltning (DIGG).</value>
+    <value>Sveriges offentliga verifieringsapp för vaccinationsbevis utvecklad av Myndigheten för digital förvaltning (DIGG)</value>
   </data>
   <data name="SettingsText" xml:space="preserve">
     <value>Inställningar</value>
@@ -328,7 +327,52 @@
   <data name="NoVerificationText" xml:space="preserve">
     <value>Ingen verifiering</value>
   </data>
-    <data name="PrivacyPolicyLink" xml:space="preserve">
+  <data name="PrivacyPolicyLink" xml:space="preserve">
     <value>Integritetspolicy</value>
+  </data>
+  <data name="AboutViewCancelButtonText" xml:space="preserve">
+    <value>Avbryt knapp</value>
+  </data>
+  <data name="AboutViewLogotypeText" xml:space="preserve">
+    <value>DIGG logotyp</value>
+  </data>
+  <data name="MainViewImageText" xml:space="preserve">
+    <value>Bild av mobil med QR kod</value>
+  </data>
+  <data name="MainViewInfoButtonText" xml:space="preserve">
+    <value>Info knapp</value>
+  </data>
+  <data name="ResultViewFailedImageText" xml:space="preserve">
+    <value>Ej Godkänd ikon</value>
+  </data>
+  <data name="ResultViewValidImageText" xml:space="preserve">
+    <value>Godkänd ikon</value>
+  </data>
+  <data name="RevokedCertificateText" xml:space="preserve">
+    <value>Falskt bevis</value>
+  </data>
+  <data name="KeyModalErrorMessage" xml:space="preserve">
+    <value>Se till att appen kan ansluta till internet så laddas nycklarna ner automatiskt.</value>
+  </data>
+  <data name="UpdateViewButtonText" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="UpdateViewCurrentVersionText" xml:space="preserve">
+    <value>Installerad version: </value>
+  </data>
+  <data name="UpdateViewLatestVersionText" xml:space="preserve">
+    <value>Senaste version:</value>
+  </data>
+  <data name="UpdateViewTitle" xml:space="preserve">
+    <value>Uppdatera din app</value>
+  </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartOne" xml:space="preserve">
+    <value>Mer än </value>
+  </data>
+  <data name="NotApprovedMaxDaysSinceLastDosePartTwo" xml:space="preserve">
+    <value> dagar sedan senaste vaccinering</value>
+  </data>
+  <data name="UpdateViewPageText" xml:space="preserve">
+    <value>Tillbakaknappen är deaktiverad, uppdatering nödvändig</value>
   </data>
 </root>
